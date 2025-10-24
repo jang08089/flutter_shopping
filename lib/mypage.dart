@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_shopping/itemcart.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_shopping/profile.dart';
 import 'package:flutter_shopping/profileeditpage.dart';
@@ -79,7 +80,17 @@ class MypageState extends State<Mypage> {
                 child: Text("프로필 수정"),
               ),
             ),
-             Text("장바구니"),
+            SizedBox(height: 30),
+             SizedBox(
+              width: double.infinity,
+              height: 50,
+              child: ElevatedButton(                
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder:(context)=> Itemcart()));
+                },
+                child: Text("장바구니"),
+              ),
+            ),
           ],
         ),
       ),
