@@ -1,6 +1,6 @@
 {
-    "name": "flutter_shopping",
-    "short_name": "flutter_shopping",
+    "name": "shopping_mall",
+    "short_name": "shopping_mall",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
