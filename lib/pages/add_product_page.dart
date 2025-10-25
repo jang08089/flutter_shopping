@@ -28,44 +28,53 @@ class _AddProductPageState extends State<AddProductPage> {
         title: Text('상품 등록'),
         leading: BackButton(), // 뒤로가기 버튼
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey, // 폼 키 연결
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ImageSelector(
-                  onImageSelected: (Path) {
-                    setState(() {
-                      selectedImagePath = Path;
-                    });
-                  },
-                ),
-                SizedBox(height: 20),
-                ProductNameInput(onSaved: (value) => productName = value),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return SingleChildScrollView(
+            padding: EdgeInsets.all(16.0),
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: constraints.maxHeight),
+              child: IntrinsicHeight(
+                child: Form(
+                  key: _formKey, // 폼 키 연결
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      ImageSelector(
+                        onImageSelected: (Path) {
+                          setState(() {
+                            selectedImagePath = Path;
+                          });
+                        },
+                      ),
+                      SizedBox(height: 20),
+                      ProductNameInput(onSaved: (value) => productName = value),
 
-                SizedBox(height: 20),
-                ProductPriceInput(onSaved: (value) => productPrice = value),
+                      SizedBox(height: 20),
+                      ProductPriceInput(
+                        onSaved: (value) => productPrice = value,
+                      ),
 
-                SizedBox(height: 20),
-                ProductDescriptionInput(
-                  onSaved: (value) => productDescription = value,
-                ),
+                      SizedBox(height: 20),
+                      ProductDescriptionInput(
+                        onSaved: (value) => productDescription = value,
+                      ),
 
-                SizedBox(height: 30),
-                SubmitButton(
-                  formkey: _formKey,
-                  productName: productName,
-                  productPrice: productPrice,
-                  productDescription: productDescription,
-                  selectedImagePath: selectedImagePath,
+                      SizedBox(height: 30),
+                      SubmitButton(
+                        formkey: _formKey,
+                        productName: productName,
+                        productPrice: productPrice,
+                        productDescription: productDescription,
+                        selectedImagePath: selectedImagePath,
+                      ),
+                    ],
+                  ),
                 ),
-              ],
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

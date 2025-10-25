@@ -7,14 +7,36 @@ class ProductNameInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: InputDecoration(
-        labelText: "상품 이름",
-        border: OutlineInputBorder(),
-      ),
-      validator: (value) =>
-          value == null || value.isEmpty ? "상품 이름을 입력해주세요" : null,
-      onSaved: onSaved,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "상품 이름",
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        ),
+        SizedBox(height: 8),
+        TextFormField(
+          decoration: InputDecoration(
+            hintText: "상품 이름을 입력해주세요.",
+            border: OutlineInputBorder(),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.black, width: 2),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey, width: 2),
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return "상품 이름을 입력해주세요.";
+            }
+            return null;
+          },
+          onSaved: onSaved,
+        ),
+      ],
     );
   }
 }
