@@ -35,7 +35,15 @@ class _AddProductPageState extends State<AddProductPage> {
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [],
+              children: [
+                ImageSelector(
+                  onImageSelected: (Path) {
+                    setState(() {
+                      selectedImagePath = Path;
+                    });
+                  },
+                ),
+              ],
             ),
           ),
         ),
