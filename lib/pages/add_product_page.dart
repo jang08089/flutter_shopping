@@ -32,37 +32,31 @@ class _AddProductPageState extends State<AddProductPage> {
         centerTitle: true,
         leading: BackButton(), // 뒤로가기 버튼
       ),
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          return SingleChildScrollView(
-            padding: EdgeInsets.all(16.0),
-            child: Form(
-              key: _formKey, // 폼 키 연결
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  ImageSelector(
-                    onImageSelected: (Path) {
-                      setState(() {
-                        selectedImagePath = Path;
-                      });
-                    },
-                  ),
-                  SizedBox(height: 20),
-                  ProductNameInput(onSaved: (value) => productName = value),
-
-                  SizedBox(height: 20),
-                  ProductPriceInput(onSaved: (value) => productPrice = value),
-
-                  SizedBox(height: 20),
-                  ProductDescriptionInput(
-                    onSaved: (value) => productDescription = value,
-                  ),
-                ],
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(16.0),
+        child: Form(
+          key: _formKey, // 폼 키 연결
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              ImageSelector(
+                onImageSelected: (Path) {
+                  setState(() {
+                    selectedImagePath = Path;
+                  });
+                },
               ),
-            ),
-          );
-        },
+              SizedBox(height: 20),
+              ProductNameInput(onSaved: (value) => productName = value),
+              SizedBox(height: 20),
+              ProductPriceInput(onSaved: (value) => productPrice = value),
+              SizedBox(height: 20),
+              ProductDescriptionInput(
+                onSaved: (value) => productDescription = value,
+              ),
+            ],
+          ),
+        ),
       ),
       bottomNavigationBar: SubmitButton(
         formkey: _formKey,
