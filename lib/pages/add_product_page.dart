@@ -43,6 +43,8 @@ class _AddProductPageState extends State<AddProductPage> {
                     });
                   },
                 ),
+                SizedBox(height: 20),
+                ProductNameInput(onSaved: (value) => productName = value),
               ],
             ),
           ),
