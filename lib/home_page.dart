@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shopping/core.dart';
 import 'package:flutter_shopping/widget/item_list.dart';
+import 'package:flutter_shopping/widget/other_page.dart';
 
 
 class HomePage extends StatelessWidget{
@@ -42,10 +43,19 @@ return Padding(
         separatorBuilder: (context, index) => const SizedBox(height: 15),
         itemBuilder: (context, index) {
           final item = dummyItems[index];
-          return itemList(
-            item['name'] as String,
-            item['price'] as int,
-            item['selected'] as bool,
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+              MaterialPageRoute(
+                builder: (context) => DetailPage(itemName: item['name'] as String)
+                ),
+              );
+            },
+            child: itemList(
+              item['name'] as String,
+              item['price'] as int,
+              item['selected'] as bool,
+            ),
           );
         },
       ),
@@ -62,19 +72,35 @@ return Padding(
           fontWeight: FontWeight.bold
         ),
         ),
-        actions: [
-          Icon(
+        actions: [GestureDetector(
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => FavoritePage())
+            );
+          },
+          child: Icon(
           Icons.favorite, 
           color: Colors.orange,),
+        ),
           SizedBox(width: 15),
-        Icon(
+        GestureDetector(
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => CartPage())
+            );
+          },
+          child: Icon(
           Icons.shopping_cart),
+        ),
+      
           SizedBox(width: 10),
-      ]
+      ],
       ),
+      
       body: bodyContent,
       
-      floatingActionButton: FloatingActionButton(onPressed: (){},
+      floatingActionButton: FloatingActionButton(onPressed: (){
+        Navigator.push(context,
+        MaterialPageRoute(builder: (context) => RegisterPage()));
+      },
       child: Icon(Icons.add, color: Colors.white, size: 50,),
       backgroundColor: Colors.blue,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30))
