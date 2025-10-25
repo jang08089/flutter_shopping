@@ -1,4 +1,4 @@
-# flutter_shopping
+# shopping_mall
 
 A new Flutter project.
 
