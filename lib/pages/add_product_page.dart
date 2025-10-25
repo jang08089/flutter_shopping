@@ -45,6 +45,9 @@ class _AddProductPageState extends State<AddProductPage> {
                 ),
                 SizedBox(height: 20),
                 ProductNameInput(onSaved: (value) => productName = value),
+
+                SizedBox(height: 20),
+                ProductPriceInput(onSaved: (value) => productPrice = value),
               ],
             ),
           ),
