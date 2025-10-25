@@ -16,6 +16,7 @@ class ProductNameInput extends StatelessWidget {
         ),
         SizedBox(height: 8),
         TextFormField(
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           decoration: InputDecoration(
             hintText: "상품 이름을 입력해주세요.",
             border: OutlineInputBorder(),

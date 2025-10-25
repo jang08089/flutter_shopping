@@ -16,7 +16,8 @@ class ProductDescriptionInput extends StatelessWidget {
         ),
         SizedBox(height: 8),
         TextFormField(
-          minLines: 5,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          minLines: 10,
           maxLines: null,
           keyboardType: TextInputType.multiline,
           decoration: InputDecoration(
