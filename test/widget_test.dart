@@ -1,30 +1,84 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_shopping/pages/product_details_pages/icons.dart';
 
-import 'package:flutter_shopping/main.dart';
+class ProductDetailsPage extends StatelessWidget {
+  final String title =
+      '갈색 암컷 푸들푸들푸들푸들푸들푸들푸들푸들푸들푸들푸들푸들푸들푸들푸들푸들';
+  final String content =
+      '푸들 13세 암컷 강아지입니다. 편식하고 산책 좋아해요... (생략)';
+  final int price = 100000000;
 
-void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          // 스크롤 가능한 영역
+          SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Image.asset(
+                  'assets/images/ahri.png',
+                  width: double.infinity,
+                  height: 400,
+                  fit: BoxFit.cover,
+                ),
+                SizedBox(height: 10),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    title,
+                    style:
+                        TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+                    softWrap: true,
+                  ),
+                ),
+                SizedBox(height: 10),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    '$price원',
+                    style:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                SizedBox(height: 20),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    content,
+                    style: TextStyle(fontSize: 16, color: Colors.grey[700]),
+                  ),
+                ),
+              ],
+            ),
+          ),
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
-  });
+          // 고정 아이콘 (항상 위에 보임)
+          Positioned(
+            top: 60,
+            left: 5,
+            right: 5,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CustomIconButton(
+                  icon: CupertinoIcons.back,
+                  onTap: () => Navigator.pop(context),
+                  colorData: Colors.white70,
+                ),
+                CustomIconButton(
+                  icon: CupertinoIcons.heart_fill,
+                  onTap: () => print('찜하기 됨'),
+                  colorData: Colors.redAccent,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
