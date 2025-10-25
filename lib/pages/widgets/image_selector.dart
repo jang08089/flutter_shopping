@@ -11,7 +11,13 @@ class ImageSelector extends StatefulWidget {
 class _ImageSelectorState extends State<ImageSelector> {
   String? selectedImage;
 
-  List<String> images = ["", "", "assets/images/penguin.png", "", ""];
+  List<String> images = [
+    "",
+    "assets/images/simba.jpg",
+    "assets/images/penguin.png",
+    "assets/images/suyeon.jpg",
+    "",
+  ];
 
   void _openGallery() {
     showModalBottomSheet(
@@ -51,13 +57,12 @@ class _ImageSelectorState extends State<ImageSelector> {
     return Center(
       child: Column(
         children: [
-          selectedImage != null
-              ? Image.asset(selectedImage!, width: 200, height: 200)
-              : Icon(Icons.image, size: 100, color: Colors.grey),
-          SizedBox(height: 8),
-          ElevatedButton(onPressed: _openGallery, child: Text("이미지 선택")),
-          if (selectedImage != null)
-            Text("이미지 선택됨", style: TextStyle(color: Colors.green)),
+          GestureDetector(
+            onTap: _openGallery,
+            child: selectedImage != null
+                ? Image.asset(selectedImage!, width: 200, height: 200)
+                : Icon(Icons.image, size: 100, color: Colors.grey),
+          ),
         ],
       ),
     );
