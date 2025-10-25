@@ -1,5 +1,3 @@
-// 이 파일은 별도의 파일 (예: pages/placeholder_pages.dart)에 저장하거나 
-// HomePage.dart 파일의 맨 아래에 추가할 수 있습니다.
 
 import 'package:flutter/material.dart';
 
@@ -17,7 +15,6 @@ class RegisterPage extends StatelessWidget {
 
 // 상품 상세 페이지 (아이템 목록 클릭 시)
 class DetailPage extends StatelessWidget {
-  // 상세 페이지는 어떤 상품이 선택되었는지 정보를 받을 수 있도록 생성자에 인자를 추가했습니다.
   final String itemName;
   const DetailPage({super.key, required this.itemName}); 
   

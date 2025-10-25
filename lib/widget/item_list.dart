@@ -1,8 +1,27 @@
 
-
-
-
 import 'package:flutter/material.dart';
+
+class FavoriteIcon extends StatelessWidget{
+  final bool isSelected;
+  final VoidCallback? onTap;
+
+  const FavoriteIcon({
+    super.key,
+    required this.isSelected,
+    this.onTap
+  });
+
+@override
+Widget build(BuildContext context){
+  return GestureDetector(
+    onTap: onTap,
+    child: Icon(
+      (isSelected) ? Icons.favorite : Icons.favorite_border,
+      color: Colors.red),
+      );
+}
+}
+
 
 Widget itemList(String itemName, int price, bool isSelected) {
     return Row(
@@ -32,8 +51,10 @@ Widget itemList(String itemName, int price, bool isSelected) {
           ],
         ),
         Spacer(),
-        Icon((isSelected) ? Icons.favorite : Icons.favorite_border,
-        color: Colors.red)
+        FavoriteIcon(
+          isSelected: isSelected,
+          onTap: (){},
+        )
       ],
     );
   }

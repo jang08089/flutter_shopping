@@ -79,7 +79,7 @@ return Padding(
           },
           child: Icon(
           Icons.favorite, 
-          color: Colors.orange,),
+          color: Colors.orange,), // 찜목록 페이지 완성되면 연결
         ),
           SizedBox(width: 15),
         GestureDetector(
@@ -88,7 +88,7 @@ return Padding(
             );
           },
           child: Icon(
-          Icons.shopping_cart),
+          Icons.shopping_cart), // 장바구니 페이지 완성되면 연결
         ),
       
           SizedBox(width: 10),
@@ -104,7 +104,7 @@ return Padding(
       child: Icon(Icons.add, color: Colors.white, size: 50,),
       backgroundColor: Colors.blue,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30))
-      ),
+      ), // 상품 등록 페이지 완성되면 연결
     );
   }
 }
