@@ -53,6 +53,15 @@ class _AddProductPageState extends State<AddProductPage> {
                 ProductDescriptionInput(
                   onSaved: (value) => productDescription = value,
                 ),
+
+                SizedBox(height: 30),
+                SubmitButton(
+                  formkey: _formKey,
+                  productName: productName,
+                  productPrice: productPrice,
+                  productDescription: productDescription,
+                  selectedImagePath: selectedImagePath,
+                ),
               ],
             ),
           ),
