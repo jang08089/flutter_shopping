@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shopping/pages/add_product_page.dart';
+import 'package:flutter_shopping/pages/product_details_page.dart';
 import 'home_page.dart';
 
 void main() {
@@ -17,6 +18,10 @@ class MyApp extends StatelessWidget {
         "/": (context) => HomePage(), // 홈페이지 라우트
         "/add-product": (context) => AddProductPage(), // 상품 등록 페이지 라우트
       },
+      // routes: {
+      //   "/": (context) => HomePage(), // 홈페이지 라우트
+      //   "/add-product": (context) => ProductDetailsPage(), // 상품 등록 페이지 라우트
+      // },
       initialRoute: "/", // 앱 시작 시 첫 화면 = 홈페이지
     );
   }

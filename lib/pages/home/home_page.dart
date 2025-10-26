@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_shopping/pages/product_details_pages/product_details_page.dart';
+import 'package:flutter_shopping/pages/product_details_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
