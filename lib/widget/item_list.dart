@@ -10,7 +10,6 @@ class FavoriteIcon extends StatelessWidget{
     required this.isSelected,
     this.onTap
   });
-
 @override
 Widget build(BuildContext context){
   return GestureDetector(
@@ -21,7 +20,6 @@ Widget build(BuildContext context){
       );
 }
 }
-
 
 Widget itemList(String itemName, int price, bool isSelected) {
     return Row(
@@ -54,7 +52,11 @@ Widget itemList(String itemName, int price, bool isSelected) {
         FavoriteIcon(
           isSelected: isSelected,
           onTap: (){},
-        )
+        ),
+        SizedBox(width: 15),
+        Icon(Icons.shopping_cart_checkout)
+        // 장바구니에 담는 기능 추가 예정
+        
       ],
     );
   }

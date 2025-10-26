@@ -81,7 +81,7 @@ return Padding(
           Icons.favorite, 
           color: Colors.orange,), // 찜목록 페이지 완성되면 연결
         ),
-          SizedBox(width: 15),
+          SizedBox(width: 20),
         GestureDetector(
           onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) => CartPage())
