@@ -3,16 +3,30 @@ import 'package:flutter_shopping/core.dart';
 import 'package:flutter_shopping/pages/add_product_pages/add_product_page.dart';
 import 'package:flutter_shopping/pages/home/widget/item_list.dart';
 import 'package:flutter_shopping/pages/home/widget/other_page.dart';
+import 'package:flutter_shopping/pages/mypage/mypage.dart';
 import 'package:flutter_shopping/pages/product_details/product_details_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
-  final List<Map<String, dynamic>> dummyItems = const [
-    {'name': '패딩', 'price': 2000000, 'selected': true},
-    {'name': '패딩', 'price': 2000000, 'selected': true},
-    {'name': '패딩', 'price': 2000000, 'selected': true},
-    {'name': '패딩', 'price': 2000000, 'selected': true},
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<Map<String, dynamic>> dummyItems = [
+    {'name': '패딩', 'price': 2000000},
+    {'name': '가디건', 'price': 200000},
+    {'name': '양말', 'price': 2000},
+    {'name': '바지', 'price': 30000},
   ];
+
+void deleteItem(int index){
+  setState(() {
+    dummyItems.removeAt(index);
+  });
+}
+
   Widget get bodyContent {
     if (dummyItems.isEmpty) {
       return Center(
@@ -35,27 +49,23 @@ class HomePage extends StatelessWidget {
         separatorBuilder: (context, index) => const SizedBox(height: 15),
         itemBuilder: (context, index) {
           final item = dummyItems[index];
+          final deleteIndex = index;
+
           return GestureDetector(
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (context) =>
-                      DetailPage(itemName: item['name'] as String),
-                ),
+                MaterialPageRoute(builder: (context) => ProductDetailsPage()),
               );
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => ProductDetailsPage()),
-              // );
             },
             child: itemList(
               item['name'] as String,
               item['price'] as int,
-              item['selected'] as bool,
+              () => deleteItem(deleteIndex)
             ),
           );
         },
+        
       ),
     );
   }
@@ -70,35 +80,35 @@ class HomePage extends StatelessWidget {
           style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
         ),
         actions: [
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => FavoritePage()),
-              );
-            },
-            child: Icon(
-              Icons.favorite,
-              color: Colors.orange,
-            ), // 찜목록 페이지 완성되면 연결
-          ),
           SizedBox(width: 20),
           GestureDetector(
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CartPage()),
+                MaterialPageRoute(builder: (context) => Mypage()),// 마이페이지 연결 완료
               );
             },
-            child: Icon(Icons.shopping_cart), // 장바구니 페이지 완성되면 연결
+            child: Icon(Icons.person_2), 
           ),
-
-          SizedBox(width: 10),
+          SizedBox(width: 30),
         ],
       ),
 
       body: bodyContent,
 
+      bottomNavigationBar: Padding(padding: EdgeInsets.only(right: 15, left: 15, bottom: 30),
+      child: Container(
+          alignment: Alignment.center,
+          width: double.infinity, height: 60,
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),
+        color: Colors.blue),
+        child: Text('장바구니 가기',
+        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,
+        color: Colors.white),
+        ),
+      ),
+        ),
+      
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
@@ -109,7 +119,8 @@ class HomePage extends StatelessWidget {
         child: Icon(Icons.add, color: Colors.white, size: 50),
         backgroundColor: Colors.blue,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-      ), // 상품 등록 페이지 완성되면 연결
+      ), // 연결 완료
+
     );
   }
 }
