@@ -17,12 +17,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Map<String, dynamic>> items = [
-    {'name': '패딩', 'price': 2000000},
-    {'name': '가디건', 'price': 200000},
-    {'name': '양말', 'price': 2000},
-    {'name': '바지', 'price': 30000},
-  ];
+  List<Map<String, dynamic>> items = [];
   @override
   void initState(){
     super.initState();
