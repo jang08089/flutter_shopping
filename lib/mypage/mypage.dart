@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_shopping/itemcart.dart';
+import 'package:flutter_shopping/itemcartpage/itemcart.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:flutter_shopping/profile.dart';
-import 'package:flutter_shopping/profileeditpage.dart';
+import 'package:flutter_shopping/profile_editpage/profile.dart';
+import 'package:flutter_shopping/profile_editpage/profileeditpage.dart';
 
 class Mypage extends StatefulWidget {
   const Mypage({super.key});

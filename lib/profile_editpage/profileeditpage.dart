@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_shopping/profile.dart';
+import 'package:flutter_shopping/profile_editpage/profile.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
-import 'package:flutter_shopping/profile.dart';
+
 
 class Profileeditpage extends StatefulWidget {
   const Profileeditpage({super.key});
