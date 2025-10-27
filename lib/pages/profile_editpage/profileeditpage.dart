@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_shopping/profile_editpage/profile.dart';
+import 'package:flutter_shopping/pages/profile_editpage/profile.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
