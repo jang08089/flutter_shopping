@@ -1,8 +1,9 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
-Widget itemList(String itemName, int price, VoidCallback onDelete) {
+Widget itemList(String itemName, int price, VoidCallback onDelete, VoidCallback onCartTap) {
     return Row(
             children: [
             Container(
@@ -30,7 +31,9 @@ Widget itemList(String itemName, int price, VoidCallback onDelete) {
               ],
             ),
             Spacer(),
-            Icon(Icons.shopping_cart_checkout),
+            GestureDetector(
+              onTap: onCartTap,
+              child: Icon(Icons.shopping_cart)),
             SizedBox(width: 15),
             GestureDetector(
               onTap: onDelete,

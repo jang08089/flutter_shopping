@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shopping/core.dart';
 import 'package:flutter_shopping/pages/add_product_pages/add_product_page.dart';
+import 'package:flutter_shopping/pages/home/noitemcart_page.dart';
 import 'package:flutter_shopping/pages/home/widget/item_list.dart';
-import 'package:flutter_shopping/pages/home/widget/other_page.dart';
+import 'package:flutter_shopping/pages/itemcartpage/itemcart.dart';
 import 'package:flutter_shopping/pages/mypage/mypage.dart';
 import 'package:flutter_shopping/pages/product_details/product_details_page.dart';
 
@@ -20,12 +22,36 @@ class _HomePageState extends State<HomePage> {
     {'name': '양말', 'price': 2000},
     {'name': '바지', 'price': 30000},
   ];
+  bool isCartEmpty = true;
 
+void showDelete(BuildContext context, int index){
+  showCupertinoDialog(context: context,
+   builder: (BuildContext context){
+    return CupertinoAlertDialog(
+      title: Text('상품을 삭제하시겠습니까?'),
+      actions: <Widget>[
+        CupertinoDialogAction(child: Text("취소"), 
+        onPressed: (){Navigator.of(context).pop();
+        },
+        ),
+        CupertinoDialogAction(
+          isDestructiveAction: true,
+          child: Text("삭제"), 
+        onPressed: (){Navigator.of(context).pop();
+        deleteItem(index);
+        },
+        ),
+      ],
+    );
+   }
+  );
+}
 void deleteItem(int index){
   setState(() {
     dummyItems.removeAt(index);
   });
 }
+
 
   Widget get bodyContent {
     if (dummyItems.isEmpty) {
@@ -61,7 +87,12 @@ void deleteItem(int index){
             child: itemList(
               item['name'] as String,
               item['price'] as int,
-              () => deleteItem(deleteIndex)
+              () => showDelete(context, index),
+              (){
+                setState(() {
+                  isCartEmpty = false;
+                });
+              }
             ),
           );
         },
@@ -69,9 +100,10 @@ void deleteItem(int index){
       ),
     );
   }
-
   @override
   Widget build(BuildContext context) {
+
+  
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -97,14 +129,22 @@ void deleteItem(int index){
       body: bodyContent,
 
       bottomNavigationBar: Padding(padding: EdgeInsets.only(right: 15, left: 15, bottom: 30),
-      child: Container(
-          alignment: Alignment.center,
-          width: double.infinity, height: 60,
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),
-        color: Colors.blue),
-        child: Text('장바구니 가기',
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,
-        color: Colors.white),
+      child: GestureDetector(
+        onTap: (){
+          Widget targetPage = isCartEmpty ? NoitemcartPage() : Itemcart();
+          Navigator.push(context,
+           MaterialPageRoute(builder: (context) => targetPage)
+           );
+        },
+        child: Container(
+            alignment: Alignment.center,
+            width: double.infinity, height: 60,
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),
+          color: Colors.blue),
+          child: Text('장바구니 가기',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,
+          color: Colors.white),
+          ), // 장바구니 페이지와 연결 완료
         ),
       ),
         ),
@@ -119,7 +159,7 @@ void deleteItem(int index){
         child: Icon(Icons.add, color: Colors.white, size: 50),
         backgroundColor: Colors.blue,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-      ), // 연결 완료
+      ), // 등록 페이지와 연결 완료
 
     );
   }
