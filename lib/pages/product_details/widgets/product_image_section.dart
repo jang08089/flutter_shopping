@@ -54,7 +54,7 @@ class _ProductImageSectionState extends State<ProductImageSection> {
         // 찜하기 하트 애니
         AnimatedOpacity(
           opacity: showHeart ? 1.0 : 0.0, //showHeart에 따라 보이거나 숨김
-          duration: Duration(milliseconds: 500), //애니메이션 지속 시간
+          duration: Duration(milliseconds: 100), //애니메이션 지속 시간
           child: Icon(
             isNowFavorite
                 ? CupertinoIcons
