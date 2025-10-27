@@ -1,23 +1,36 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shopping/pages/product_details/chat_page.dart';
-import 'package:flutter_shopping/pages/product_details/widgets/icons.dart';
 import 'package:flutter_shopping/pages/product_details/widgets/image_top_icons.dart';
-import 'package:flutter_shopping/pages/product_details/widgets/product_data.dart';
 import 'package:flutter_shopping/pages/product_details/widgets/product_bottom_sheet.dart';
 import 'package:flutter_shopping/pages/product_details/widgets/product_image_section.dart';
 import 'package:flutter_shopping/pages/product_details/widgets/product_info_section.dart';
 
 class ProductDetailsPage extends StatefulWidget {
+  final Map<String, dynamic> item;
+
+  ProductDetailsPage({required this.item});
+
   @override
   State<ProductDetailsPage> createState() => _ProductDetailsPageState();
 }
 
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
-  ProductData productData = ProductData();
+  late bool isFavorite;
+
+  @override
+  void initState() {
+    super.initState();
+    isFavorite = widget.item['selected'] ?? false; // 전달된 selected 값 초기화
+  }
 
   @override
   Widget build(BuildContext context) {
+    final String imagePath = widget.item['image'];
+    final String name = widget.item['name'];
+    final int price = widget.item['price'];
+    // final String contents = widget.item['contents'];
+
     return Scaffold(
       body: Stack(
         children: [
@@ -29,16 +42,17 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ProductImageSection(
-                  imagePath: productData.imagePath,
-                  isFavorite: productData.isFavortie,
+                  // item 이미지 사용 이미 상품 등록 단계에서 데이터가 없으면 등록이 불가능하게 했지만 외부에서 혹시 잘못된 데이터가 들어올 가능성을 위해 null-safe 처리함
+                  imagePath: imagePath ?? 'assets/images/error.jpg',
+                  isFavorite: isFavorite, // 상태 변수
                   onFavoriteToggle: () {
                     setState(() {
-                      productData.isFavortie = !productData.isFavortie;
+                      isFavorite = !isFavorite;
                     });
-                    print('찜했음? : ${productData.isFavortie}');
+                    print('찜했음? : $isFavorite');
                   },
                 ),
-                ProductInfoSection(productData: productData),
+                ProductInfoSection(name: name, price: price),
               ],
             ),
           ),
@@ -48,33 +62,37 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             left: 5,
             right: 5,
             child: ImageTopIcons(
-              isFavorite: productData.isFavortie,
+              isFavorite: isFavorite,
               onBack: () {
                 Navigator.pop(context);
               },
               onFavoriteToggle: () {
                 setState(() {
-                  productData.isFavortie = !productData.isFavortie;
+                  isFavorite = !isFavorite;
                 });
-                print('찜했음? : ${productData.isFavortie}');
+                print('찜했음? : ${isFavorite}');
               },
             ),
           ),
         ],
       ),
 
-      // bottomSeet 영역
+      // bottomSheet 영역
       bottomSheet: ProductBottomSheet(
-        isFavortie: productData.isFavortie,
+        // imag
+        isFavorite: isFavorite,
         onFavoriteToggle: () {
           setState(() {
-            productData.isFavortie = !productData.isFavortie;
+            isFavorite = !isFavorite;
           });
         },
         onChatTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => ChatPage()),
+            MaterialPageRoute(
+              builder: (context) =>
+                  ChatPage(imagePath: imagePath, name: name, price: price),
+            ),
           );
         },
       ),

@@ -19,48 +19,54 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<Map<String, dynamic>> items = [];
   @override
-  void initState(){
+  void initState() {
     super.initState();
     cartModel.addListener(_updateHomeState);
   }
+
   @override
-  void dispose(){
+  void dispose() {
     cartModel.removeListener(_updateHomeState);
     super.dispose();
   }
-  void _updateHomeState(){
-    setState(() {
-    });
-  
+
+  void _updateHomeState() {
+    setState(() {});
   }
 
-void showDelete(BuildContext context, int index){
-  showCupertinoDialog(context: context,
-   builder: (BuildContext context){
-    return CupertinoAlertDialog(
-      title: Text('상품을 삭제하시겠습니까?'),
-      actions: <Widget>[
-        CupertinoDialogAction(child: Text("취소"), 
-        onPressed: (){Navigator.of(context).pop();
-        },
-        ),
-        CupertinoDialogAction(
-          isDestructiveAction: true,
-          child: Text("삭제"), 
-        onPressed: (){Navigator.of(context).pop();
-        deleteItem(index);
-        },// 삭제 확인창
-        ),
-      ],
+  void showDelete(BuildContext context, int index) {
+    showCupertinoDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return CupertinoAlertDialog(
+          title: Text('상품을 삭제하시겠습니까?'),
+          actions: <Widget>[
+            CupertinoDialogAction(
+              child: Text("취소"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            CupertinoDialogAction(
+              isDestructiveAction: true,
+              child: Text("삭제"),
+              onPressed: () {
+                Navigator.of(context).pop();
+                deleteItem(index);
+              }, // 삭제 확인창
+            ),
+          ],
+        );
+      },
     );
-   }
-  );
-}
-void deleteItem(int index){
-  setState(() {
-    items.removeAt(index);
-  });
-}
+  }
+
+  void deleteItem(int index) {
+    setState(() {
+      items.removeAt(index);
+    });
+  }
+
   Widget get bodyContent {
     if (items.isEmpty) {
       return Center(
@@ -74,7 +80,7 @@ void deleteItem(int index){
             ),
           ],
         ),
-      );// 상품 없는 화면
+      ); // 상품 없는 화면
     }
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -87,9 +93,12 @@ void deleteItem(int index){
 
           return GestureDetector(
             onTap: () {
+              print(item);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ProductDetailsPage()),
+                MaterialPageRoute(
+                  builder: (context) => ProductDetailsPage(item: item),
+                ),
               ); // 상세페이지 연결
             },
             child: itemList(
@@ -97,27 +106,33 @@ void deleteItem(int index){
               item['price'] as int,
               imagePath: item['image']?.toString() ?? "",
               () => showDelete(context, index),
-              (){
-               cartModel.addItem(item['name'] as String, item['price'] as int);
-               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text("장바구니에 추가되었습니다",
-                style: TextStyle(color: Colors.white,
-                fontWeight: FontWeight.bold),),
-                backgroundColor: Colors.grey[700],
-                duration: Duration(seconds: 1),
-                 ), // 장바구니 아이콘 눌렀을 때 나오는 스낵바
-               );
-              }
+              () {
+                cartModel.addItem(item['name'] as String, item['price'] as int);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      "장바구니에 추가되었습니다",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    backgroundColor: Colors.grey[700],
+                    duration: Duration(seconds: 1),
+                  ), // 장바구니 아이콘 눌렀을 때 나오는 스낵바
+                );
+              },
             ),
           );
         },
-    ),
+      ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
-final bool currentIsCartEmpty = cartModel.isCartEmpty;
-  
+    final bool currentIsCartEmpty = cartModel.isCartEmpty;
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -131,10 +146,12 @@ final bool currentIsCartEmpty = cartModel.isCartEmpty;
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Mypage()),// 마이페이지 연결 완료
+                MaterialPageRoute(
+                  builder: (context) => Mypage(),
+                ), // 마이페이지 연결 완료
               );
             },
-            child: Icon(Icons.person_2), 
+            child: Icon(Icons.person_2),
           ),
           SizedBox(width: 30),
         ],
@@ -142,27 +159,34 @@ final bool currentIsCartEmpty = cartModel.isCartEmpty;
 
       body: bodyContent,
 
-      bottomNavigationBar: Padding(padding: EdgeInsets.only(right: 15, left: 15, bottom: 30),
-      child: GestureDetector(
-        onTap: (){
-          Widget targetPage = currentIsCartEmpty ? NoitemcartPage() : Itemcart();
-          Navigator.push(context,
-           MaterialPageRoute(builder: (context) => targetPage)
-           );// 상품 추가 안 했을 때는 빈화면
-        },
-        child: Container(
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.only(right: 15, left: 15, bottom: 30),
+        child: GestureDetector(
+          onTap: () {
+            Widget targetPage = currentIsCartEmpty
+                ? NoitemcartPage()
+                : Itemcart();
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => targetPage),
+            ); // 상품 추가 안 했을 때는 빈화면
+          },
+          child: Container(
             alignment: Alignment.center,
-            width: double.infinity, height: 50,
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),
-          color: Colors.lightBlue),
-          child: Text('장바구니 가기',
-          style: TextStyle(fontSize: 16,
-          color: Colors.white),
-          ), // 장바구니 페이지와 연결 완료
+            width: double.infinity,
+            height: 50,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              color: Colors.lightBlue,
+            ),
+            child: Text(
+              '장바구니 가기',
+              style: TextStyle(fontSize: 16, color: Colors.white),
+            ), // 장바구니 페이지와 연결 완료
+          ),
         ),
       ),
-        ),
-      
+
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           final newItem = await Navigator.push(

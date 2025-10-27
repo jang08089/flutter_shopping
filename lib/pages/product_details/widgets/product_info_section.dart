@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_shopping/pages/product_details/widgets/product_data.dart';
 
 class ProductInfoSection extends StatelessWidget {
-  ProductData productData = ProductData();
-  ProductInfoSection({required this.productData});
+  final String name;
+  final int price;
+  // final String contents;
+  ProductInfoSection({required this.name, required this.price});
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -16,7 +16,7 @@ class ProductInfoSection extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Text(
-            productData.title,
+            name, // item에서 이름 사용
             style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
             softWrap: true,
           ),
@@ -26,7 +26,7 @@ class ProductInfoSection extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Text(
-            '${productData.price}원',
+            '$price원', // item에서 가격 사용
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
         ),
@@ -35,7 +35,8 @@ class ProductInfoSection extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Text(
-            productData.content,
+            // contents ?? 'qweqweqweqwe', // item에서 설명 사용
+            '상품 설명 없음', // item에서 설명 사용
             style: TextStyle(fontSize: 16, color: Colors.grey[700]),
           ),
         ),
