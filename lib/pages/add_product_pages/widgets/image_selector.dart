@@ -13,24 +13,9 @@ class _ImageSelectorState extends State<ImageSelector> {
 
   // assets에 이미지 파일 넣고 경로 입력
   List<String> images = [
-    "",
     "assets/images/simba.jpg",
     "assets/images/penguin.png",
     "assets/images/suyeon.jpg",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
   ];
 
   void _openGallery() {
