@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shopping/core.dart';
-import 'package:flutter_shopping/widget/item_list.dart';
-import 'package:flutter_shopping/widget/other_page.dart';
+import 'package:flutter_shopping/home/widget/item_list.dart';
+import 'package:flutter_shopping/home/widget/other_page.dart';
 
 
 class HomePage extends StatelessWidget{
   const HomePage({super.key});
   final List<Map<String, dynamic>> dummyItems = const [
     {'name': '패딩', 'price': 2000000, 'selected': true},
-    {'name': '바지', 'price': 20000, 'selected': false},
-    {'name': '가디건', 'price': 30000, 'selected': false},
-    {'name': '양말', 'price': 3000, 'selected': true},
-    {'name': '운동화', 'price': 150000, 'selected': true},
-    {'name': '선글라스', 'price': 70000, 'selected': false},
-    {'name': '시계', 'price': 300000, 'selected': true},
-    {'name': '장갑', 'price': 15000, 'selected': false},
-    {'name': '후드티', 'price': 40000, 'selected': false},
-    {'name': '슬리퍼', 'price': 12000, 'selected': true},
-    {'name': '백팩', 'price': 90000, 'selected': false},
+    {'name': '패딩', 'price': 2000000, 'selected': true},
+    {'name': '패딩', 'price': 2000000, 'selected': true},
+    {'name': '패딩', 'price': 2000000, 'selected': true},
+  
+    
   ];
 Widget get bodyContent {
   if(dummyItems.isEmpty){
