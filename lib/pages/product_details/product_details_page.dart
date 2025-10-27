@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shopping/pages/product_details/chat_page.dart';
 import 'package:flutter_shopping/pages/product_details/widgets/icons.dart';
+import 'package:flutter_shopping/pages/product_details/widgets/image_top_icons.dart';
 import 'package:flutter_shopping/pages/product_details/widgets/product_data.dart';
 import 'package:flutter_shopping/pages/product_details/widgets/product_bottom_sheet.dart';
 import 'package:flutter_shopping/pages/product_details/widgets/product_image_section.dart';
@@ -20,32 +21,40 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
     return Scaffold(
       body: Stack(
         children: [
-          // 스크롤 가능한 영역
           SingleChildScrollView(
+            padding: EdgeInsets.only(
+              bottom: 130,
+            ), // bottomSheet 높이만큼 (없으면 스크롤이 끝까지 안되므로)
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // 사진, 사진 위 아이콘 영역
-                ProductImageSection(
-                  imagePath: productData.imagePath,
-                  isFavorite: productData.isFavortie,
-                  onBack: () {
-                    Navigator.pop(context); //뒤로 가기
-                  },
-                  onFavoriteToggle: () {
-                    setState(() {
-                      productData.isFavortie = !productData.isFavortie;
-                    });
-                    print('찜했음? : ${productData.isFavortie}');
-                  },
-                ),
-                // 상품명, 가격, 설명 영역
+                ProductImageSection(imagePath: productData.imagePath),
                 ProductInfoSection(productData: productData),
               ],
             ),
           ),
+          // 이미지 위 아이콘 올리기
+          Positioned(
+            top: 60,
+            left: 5,
+            right: 5,
+            child: ImageTopIcons(
+              isFavorite: productData.isFavortie,
+              onBack: () {
+                Navigator.pop(context);
+              },
+              onFavoriteToggle: () {
+                setState(() {
+                  productData.isFavortie = !productData.isFavortie;
+                });
+                print('찜했음? : ${productData.isFavortie}');
+              },
+            ),
+          ),
         ],
       ),
+
+      // bottomSeet 영역
       bottomSheet: ProductBottomSheet(
         isFavortie: productData.isFavortie,
         onFavoriteToggle: () {

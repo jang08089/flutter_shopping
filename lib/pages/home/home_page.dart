@@ -21,11 +21,11 @@ class _HomePageState extends State<HomePage> {
     {'name': '바지', 'price': 30000},
   ];
 
-void deleteItem(int index){
-  setState(() {
-    dummyItems.removeAt(index);
-  });
-}
+  void deleteItem(int index) {
+    setState(() {
+      dummyItems.removeAt(index);
+    });
+  }
 
   Widget get bodyContent {
     if (dummyItems.isEmpty) {
@@ -61,11 +61,10 @@ void deleteItem(int index){
             child: itemList(
               item['name'] as String,
               item['price'] as int,
-              () => deleteItem(deleteIndex)
+              () => deleteItem(deleteIndex),
             ),
           );
         },
-        
       ),
     );
   }
@@ -85,10 +84,12 @@ void deleteItem(int index){
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Mypage()),// 마이페이지 연결 완료
+                MaterialPageRoute(
+                  builder: (context) => Mypage(),
+                ), // 마이페이지 연결 완료
               );
             },
-            child: Icon(Icons.person_2), 
+            child: Icon(Icons.person_2),
           ),
           SizedBox(width: 30),
         ],
@@ -96,19 +97,27 @@ void deleteItem(int index){
 
       body: bodyContent,
 
-      bottomNavigationBar: Padding(padding: EdgeInsets.only(right: 15, left: 15, bottom: 30),
-      child: Container(
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.only(right: 15, left: 15, bottom: 30),
+        child: Container(
           alignment: Alignment.center,
-          width: double.infinity, height: 60,
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),
-        color: Colors.blue),
-        child: Text('장바구니 가기',
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,
-        color: Colors.white),
+          width: double.infinity,
+          height: 60,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            color: Colors.blue,
+          ),
+          child: Text(
+            '장바구니 가기',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
         ),
       ),
-        ),
-      
+
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
@@ -120,7 +129,6 @@ void deleteItem(int index){
         backgroundColor: Colors.blue,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       ), // 연결 완료
-
     );
   }
 }

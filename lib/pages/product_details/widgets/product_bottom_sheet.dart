@@ -21,7 +21,9 @@ class ProductBottomSheet extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(15, 0, 15, 25),
       width: double.infinity,
       height: 120,
-      color: Colors.white,
+      decoration: BoxDecoration(
+        border: Border(top: BorderSide(color: Colors.black12, width: 1)),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
