@@ -67,6 +67,7 @@ class _ChatPageState extends State<ChatPage> {
         padding: EdgeInsets.only(top: 10),
         margin: EdgeInsets.only(top: 10),
         color: Colors.white,
+        // body쪽 빈 화면을 누르면~
         child: GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus(); // 가상 키보드 숨기기

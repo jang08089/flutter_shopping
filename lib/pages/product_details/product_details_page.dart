@@ -28,7 +28,16 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ProductImageSection(imagePath: productData.imagePath),
+                ProductImageSection(
+                  imagePath: productData.imagePath,
+                  isFavorite: productData.isFavortie,
+                  onFavoriteToggle: () {
+                    setState(() {
+                      productData.isFavortie = !productData.isFavortie;
+                    });
+                    print('찜했음? : ${productData.isFavortie}');
+                  },
+                ),
                 ProductInfoSection(productData: productData),
               ],
             ),
