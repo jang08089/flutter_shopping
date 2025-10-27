@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shopping/pages/add_product_pages/add_product_page.dart';
 import 'package:flutter_shopping/pages/home/home_page.dart';
 import 'package:flutter_shopping/pages/product_details/product_details_page.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       // },
       routes: {
         "/": (context) => HomePage(), // 홈페이지 라우트
-        "/add-product": (context) => ProductDetailsPage(), // 상품 등록 페이지 라우트
+        "/add-product": (context) => AddProductPage(), // 상품 등록 페이지 라우트
       },
       initialRoute: "/", // 앱 시작 시 첫 화면 = 홈페이지
     );
