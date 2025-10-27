@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_shopping/pages/widgets/productDetailsPage/chat_page.dart';
-import 'package:flutter_shopping/pages/widgets/productDetailsPage/icons.dart';
-import 'package:flutter_shopping/pages/widgets/productDetailsPage/product_data.dart';
-import 'package:flutter_shopping/pages/widgets/productDetailsPage/product_bottom_sheet.dart';
-import 'package:flutter_shopping/pages/widgets/productDetailsPage/product_image_section.dart';
-import 'package:flutter_shopping/pages/widgets/productDetailsPage/product_info_section.dart';
+import 'package:flutter_shopping/pages/product_details/chat_page.dart';
+import 'package:flutter_shopping/pages/product_details/widgets/icons.dart';
+import 'package:flutter_shopping/pages/product_details/widgets/product_data.dart';
+import 'package:flutter_shopping/pages/product_details/widgets/product_bottom_sheet.dart';
+import 'package:flutter_shopping/pages/product_details/widgets/product_image_section.dart';
+import 'package:flutter_shopping/pages/product_details/widgets/product_info_section.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   @override

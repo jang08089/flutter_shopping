@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_shopping/pages/widgets/productDetailsPage/chat_page.dart';
-import 'package:flutter_shopping/pages/widgets/productDetailsPage/icons.dart';
+import 'package:flutter_shopping/pages/product_details/chat_page.dart';
+import 'package:flutter_shopping/pages/product_details/widgets/icons.dart';
 
 class ProductBottomSheet extends StatelessWidget {
   bool isFavortie;

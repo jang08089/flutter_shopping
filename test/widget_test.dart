@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_shopping/pages/widgets/productDetailsPage/icons.dart';
+import 'package:flutter_shopping/pages/product_details/widgets/icons.dart';
 
 class ProductDetailsPage extends StatelessWidget {
   final String title =

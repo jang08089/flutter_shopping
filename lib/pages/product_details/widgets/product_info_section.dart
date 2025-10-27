@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_shopping/pages/widgets/productDetailsPage/product_data.dart';
+import 'package:flutter_shopping/pages/product_details/widgets/product_data.dart';
 
 class ProductInfoSection extends StatelessWidget {
   ProductData productData = ProductData();
