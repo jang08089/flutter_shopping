@@ -93,7 +93,6 @@ class _HomePageState extends State<HomePage> {
 
           return GestureDetector(
             onTap: () {
-              print(item);
               Navigator.push(
                 context,
                 MaterialPageRoute(
