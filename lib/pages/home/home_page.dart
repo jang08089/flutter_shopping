@@ -9,10 +9,6 @@ import 'package:flutter_shopping/pages/itemcartpage/itemcart.dart';
 import 'package:flutter_shopping/pages/mypage/mypage.dart';
 import 'package:flutter_shopping/pages/product_details/product_details_page.dart';
 
-<<<<<<< HEAD
-=======
-
->>>>>>> bf7647d3f263564ed5df3785061ebf6e450433cd
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -21,23 +17,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-<<<<<<< HEAD
-  final List<Map<String, dynamic>> items = [
-    {'name': '패딩', 'price': 2000000, 'selected': true},
-    {'name': '패딩', 'price': 2000000, 'selected': true},
-    {'name': '패딩', 'price': 2000000, 'selected': true},
-    {'name': '패딩', 'price': 2000000, 'selected': true},
-  ];
-
-=======
-  List<Map<String, dynamic>> dummyItems = [
+  List<Map<String, dynamic>> items = [
     {'name': '패딩', 'price': 2000000},
     {'name': '가디건', 'price': 200000},
     {'name': '양말', 'price': 2000},
     {'name': '바지', 'price': 30000},
   ];
   @override
-  void inintState(){
+  void initState(){
     super.initState();
     cartModel.addListener(_updateHomeState);
   }
@@ -76,10 +63,9 @@ void showDelete(BuildContext context, int index){
 }
 void deleteItem(int index){
   setState(() {
-    dummyItems.removeAt(index);
+    items.removeAt(index);
   });
 }
->>>>>>> bf7647d3f263564ed5df3785061ebf6e450433cd
   Widget get bodyContent {
     if (items.isEmpty) {
       return Center(
@@ -101,40 +87,20 @@ void deleteItem(int index){
         itemCount: items.length,
         separatorBuilder: (context, index) => const SizedBox(height: 15),
         itemBuilder: (context, index) {
-<<<<<<< HEAD
           final item = items[index];
-=======
-          final item = dummyItems[index];
           final deleteIndex = index;
 
->>>>>>> bf7647d3f263564ed5df3785061ebf6e450433cd
           return GestureDetector(
             onTap: () {
               Navigator.push(
                 context,
-<<<<<<< HEAD
-                MaterialPageRoute(
-                  builder: (context) =>
-                      DetailPage(itemName: item['name']?.toString() ?? ""),
-                ),
-              );
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => ProductDetailsPage()),
-              // );
-            },
-            child: itemList(
-              item['name']?.toString() ?? "",
-              item['price'] ?? 0,
-              item['selected'] as bool,
-              imagePath: item["image"]?.toString() ?? "",
-=======
                 MaterialPageRoute(builder: (context) => ProductDetailsPage()),
               ); // 상세페이지 연결
             },
             child: itemList(
               item['name'] as String,
               item['price'] as int,
+              imagePath: item['image']?.toString() ?? "",
               () => showDelete(context, index),
               (){
                cartModel.addItem(item['name'] as String, item['price'] as int);
@@ -147,7 +113,6 @@ void deleteItem(int index){
                  ), // 장바구니 아이콘 눌렀을 때 나오는 스낵바
                );
               }
->>>>>>> bf7647d3f263564ed5df3785061ebf6e450433cd
             ),
           );
         },
@@ -216,20 +181,12 @@ final bool currentIsCartEmpty = cartModel.isCartEmpty;
             });
           }
         },
-<<<<<<< HEAD
         backgroundColor: Colors.lightBlue,
         elevation: 6,
         highlightElevation: 12,
         shape: CircleBorder(),
         child: Icon(Icons.add, color: Colors.white, size: 40),
       ), // 상품 등록 페이지 완성되면 연결
-=======
-        child: Icon(Icons.add, color: Colors.white, size: 50),
-        backgroundColor: Colors.blue,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-      ), // 등록 페이지와 연결 완료
-
->>>>>>> bf7647d3f263564ed5df3785061ebf6e450433cd
     );
   }
 }
