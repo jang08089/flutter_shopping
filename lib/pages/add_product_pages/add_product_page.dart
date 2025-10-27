@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'widgets/image_selector.dart';
 import 'widgets/product_name_input.dart';
@@ -60,10 +61,49 @@ class _AddProductPageState extends State<AddProductPage> {
       ),
       bottomNavigationBar: SubmitButton(
         formkey: _formKey,
-        productName: productName,
-        productPrice: productPrice,
-        productDescription: productDescription,
-        selectedImagePath: selectedImagePath,
+
+        onSubmit: () {
+          if (_formKey.currentState!.validate()) {
+            _formKey.currentState!.save();
+
+            if (selectedImagePath == null || selectedImagePath!.isEmpty) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text("이미지를 선택해주세요."),
+                  backgroundColor: Colors.red,
+                ),
+              );
+              return;
+            }
+
+            final Map<String, dynamic> newItem = {
+              "name": productName ?? "",
+              "price": int.tryParse(productPrice ?? "0") ?? 0,
+              "selected": true,
+              "image": selectedImagePath ?? "",
+            };
+
+            showCupertinoDialog(
+              context: context,
+              builder: (BuildContext dialogContext) {
+                return CupertinoAlertDialog(
+                  title: Text("등록 완료"),
+                  content: Text("상품이 성공적으로 등록되었습니다."),
+                  actions: [
+                    CupertinoDialogAction(
+                      isDefaultAction: true,
+                      onPressed: () {
+                        Navigator.pop(dialogContext); // 다이얼로그 닫기
+                        Navigator.pop(context, newItem); // HomePage로 newItem 전달
+                      },
+                      child: Text("확인"),
+                    ),
+                  ],
+                );
+              },
+            );
+          }
+        },
       ),
     );
   }

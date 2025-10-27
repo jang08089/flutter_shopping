@@ -5,16 +5,23 @@ import 'package:flutter_shopping/pages/home/widget/item_list.dart';
 import 'package:flutter_shopping/pages/home/widget/other_page.dart';
 import 'package:flutter_shopping/pages/product_details/product_details_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
-  final List<Map<String, dynamic>> dummyItems = const [
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final List<Map<String, dynamic>> items = [
     {'name': '패딩', 'price': 2000000, 'selected': true},
     {'name': '패딩', 'price': 2000000, 'selected': true},
     {'name': '패딩', 'price': 2000000, 'selected': true},
     {'name': '패딩', 'price': 2000000, 'selected': true},
   ];
+
   Widget get bodyContent {
-    if (dummyItems.isEmpty) {
+    if (items.isEmpty) {
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -31,17 +38,17 @@ class HomePage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: ListView.separated(
-        itemCount: dummyItems.length,
+        itemCount: items.length,
         separatorBuilder: (context, index) => const SizedBox(height: 15),
         itemBuilder: (context, index) {
-          final item = dummyItems[index];
+          final item = items[index];
           return GestureDetector(
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) =>
-                      DetailPage(itemName: item['name'] as String),
+                      DetailPage(itemName: item['name']?.toString() ?? ""),
                 ),
               );
               // Navigator.push(
@@ -50,9 +57,10 @@ class HomePage extends StatelessWidget {
               // );
             },
             child: itemList(
-              item['name'] as String,
-              item['price'] as int,
+              item['name']?.toString() ?? "",
+              item['price'] ?? 0,
               item['selected'] as bool,
+              imagePath: item["image"]?.toString() ?? "",
             ),
           );
         },
@@ -100,15 +108,23 @@ class HomePage extends StatelessWidget {
       body: bodyContent,
 
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
+        onPressed: () async {
+          final newItem = await Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => AddProductPage()),
           );
+
+          if (newItem != null && newItem is Map<String, dynamic>) {
+            setState(() {
+              items.add(newItem);
+            });
+          }
         },
-        child: Icon(Icons.add, color: Colors.white, size: 50),
-        backgroundColor: Colors.blue,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        backgroundColor: Colors.lightBlue,
+        elevation: 6,
+        highlightElevation: 12,
+        shape: CircleBorder(),
+        child: Icon(Icons.add, color: Colors.white, size: 40),
       ), // 상품 등록 페이지 완성되면 연결
     );
   }
