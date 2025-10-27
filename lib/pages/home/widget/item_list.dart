@@ -1,9 +1,14 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
+    
 
 Widget itemList(String itemName, int price, VoidCallback onDelete, VoidCallback onCartTap) {
+final formatter = NumberFormat('#,###');
+final formattedPrice = formatter.format(price);
+
     return Row(
             children: [
             Container(
@@ -23,7 +28,7 @@ Widget itemList(String itemName, int price, VoidCallback onDelete, VoidCallback 
                   fontSize: 20),
                   ),
                   SizedBox(height: 10),
-                Text('$price원',
+                Text('$formattedPrice원',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold
