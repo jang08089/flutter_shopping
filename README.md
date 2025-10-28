@@ -62,7 +62,7 @@ samples, guidance on mobile development, and a full API reference. -->
 
 ### 상세 페이지_강준석
 <img width="180" alt="image" src="https://github.com/user-attachments/assets/21db85ac-d27b-40ba-b941-335e1cc78d2b" />
-<img width="180" alt="Image" src="https://github.com/user-attachments/assets/f94ec160-78bf-42ea-b6e2-16c5b4e1945b" />
+<img width="180" height="2736" alt="Simulator Screenshot - iPhone Air - 2025-10-28 at 22 30 09" src="https://github.com/user-attachments/assets/143f21ea-2f63-46f2-b8ad-e0ec09ccf534" />
 
 >#### 기능
 >1. 상품 등록 시 입력한 상세 내용을 보여줍니다.
