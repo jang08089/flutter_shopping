@@ -70,7 +70,7 @@ void _updateCartList(){
             showCupertinoDialog(context: context, builder: (BuildContext context){
               return CupertinoAlertDialog(title: Text('구매 완료'), content: Text("상품이 구매되었습니다."),
               actions: [CupertinoDialogAction(
-                isDefaultAction: false,
+                isDefaultAction: true,
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
@@ -94,16 +94,12 @@ void _updateCartList(){
        ),
       );
   }
-
   Widget itembox({
     required String itemName, required String formattedPrice, 
     required VoidCallback onDelete, required String imagePath,
     required int number, required VoidCallback onPlus, required VoidCallback onCount}){
-    final bool hasImage = imagePath.isNotEmpty;
 
-    return 
-      
-      Padding(
+    return Padding(
         padding: const EdgeInsets.only(right: 10),
         child: Row(
           children: [
@@ -113,20 +109,10 @@ void _updateCartList(){
               height: 100,
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),
               color: Colors.grey),
-              child: hasImage
-                ? ClipRRect( 
-                    borderRadius: BorderRadius.circular(15),
                     child: Image.asset(
                       imagePath, 
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) {
-                     
-                        return Center(child: Icon(Icons.error));
-                      },
-                    ),
-                  )
-                  : Center(child: Icon(Icons.image_not_supported, color: Colors.grey[600])),
-            ),
+                      fit: BoxFit.cover),
+                  ),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -137,7 +123,6 @@ void _updateCartList(){
                SizedBox(height: 30),
                Text('$formattedPrice원',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-               
               ],
             ),
             Spacer(),
@@ -179,12 +164,10 @@ void _updateCartList(){
                   ],
             ),
             SizedBox(height: 20),
-            
               ],
             ),
         ]
             ),
       );
-    
 }
 }
