@@ -19,7 +19,7 @@ samples, guidance on mobile development, and a full API reference. -->
 ***
 
 ## 팀소개
-| 강준석  |  김범수 | 장준혁 | 조수연  |
+| 장준혁  |  조수연 | 김범수 | 강준석  |
 | :--- | :--- | :--- | :--- |
 | <img width="57" height="53" alt="Image" src="https://github.com/user-attachments/assets/b799d0e9-3789-46e1-bd7e-ad0a0e37b4f7" /> | <img width="57" height="53" alt="Image" src="https://github.com/user-attachments/assets/795f5bd5-146f-423c-b334-537b39a8b949" /> | <img width="57" height="53" alt="Image" src="https://github.com/user-attachments/assets/cb19c995-59bd-4887-9107-bced19c73682" /> | <img width="57" height="53" alt="Image" src="https://github.com/user-attachments/assets/94822a83-01e6-4238-97a7-effd3534683b" /> |
 ***
@@ -78,10 +78,9 @@ samples, guidance on mobile development, and a full API reference. -->
 
 >#### 기능
 >1. 사진과 닉네임을 등록하여 나만의 프로필을 설정 가능합니다.
->2. 장바구니 버튼을 터치해 장바구니로 이동이 가능합니다.
 ***
 
-### 장바구니_장준혁
+### 장바구니_김범수
 <img width="180" alt="Image" src="https://github.com/user-attachments/assets/33e9aca8-eb39-4848-a173-28705b0020a4" /> 
 <img width="180" alt="Image" src="https://github.com/user-attachments/assets/57aade9d-be2b-4903-8e42-5b21f9a27288" /> 
 <img width="180" alt="Image" src="https://github.com/user-attachments/assets/587bb22c-5f83-4a4e-a582-f5abd08bc8a7" />
