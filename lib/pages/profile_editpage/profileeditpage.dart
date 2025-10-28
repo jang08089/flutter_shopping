@@ -5,7 +5,8 @@ import 'dart:io';
 
 
 class Profileeditpage extends StatefulWidget {
-  const Profileeditpage({super.key});
+  final Profile? profile;
+  const Profileeditpage(this.profile,{super.key});
 
   @override
   State<Profileeditpage> createState() => ProfileeditpageState();
@@ -33,6 +34,15 @@ class ProfileeditpageState extends State<Profileeditpage> {
     nicknamecontroller.dispose();
     super.dispose();
   }
+
+  @override
+void initState() {
+  super.initState();
+  if (widget.profile != null) {
+    nicknamecontroller.text = widget.profile!.nickname ?? '';
+    imageFile = widget.profile!.image;
+  }
+}
 
   @override
   Widget build(BuildContext context) {

@@ -4,6 +4,7 @@ import 'package:flutter_shopping/pages/home/cartmodel.dart';
 import 'package:flutter_shopping/pages/itemcartpage/itemcart.dart';
 import 'package:flutter_shopping/pages/mypage/mypage.dart';
 import 'package:flutter_shopping/pages/product_details/widgets/icons.dart';
+import 'package:flutter_shopping/pages/profile_editpage/profile.dart';
 
 class ImageTopIcons extends StatelessWidget {
   final VoidCallback onBack;
@@ -12,6 +13,7 @@ class ImageTopIcons extends StatelessWidget {
   final String imagePath;
   final int price;
   final bool alreadyCart;
+  final Profile? profile;
 
   const ImageTopIcons({
     required this.onBack,
@@ -20,6 +22,7 @@ class ImageTopIcons extends StatelessWidget {
     required this.name,
     required this.price,
     required this.alreadyCart,
+    this.profile
   });
 
   @override
@@ -40,7 +43,7 @@ class ImageTopIcons extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Mypage()),
+                  MaterialPageRoute(builder: (context) => Mypage(profile)),
                 );
               },
             ),
