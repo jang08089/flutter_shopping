@@ -51,7 +51,7 @@ Widget itemList(
       GestureDetector(
         onTap: onDelete,
         child: Icon(Icons.delete))
-      // 장바구니에 담는 기능 추가 예정
+      // 장바구니에 담는 기능 추가
     ],
   );
 }
