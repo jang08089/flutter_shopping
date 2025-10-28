@@ -5,14 +5,35 @@ class Cartmodel extends ChangeNotifier{
 
   List<Map<String, dynamic>> get cartItems => _cartItems;
 
-  void addItem(String name, int price){
-    _cartItems.add({'name': name, 'price': price});
+  void addItem(String name, int price, {String imagePath = ""}){
+    _cartItems.add({'name': name, 'price': price, 'image': imagePath, 'number': 1});
     notifyListeners();
   }
 
 void removeItem(int index){
   _cartItems.removeAt(index);
   notifyListeners();
+}
+
+void plusNumber(int index){
+  if(index >= 0 && index < _cartItems.length){
+    _cartItems[index]['number'] += 1;
+    notifyListeners();
+  }
+}
+
+void countNumber(int index){
+  if(index >= 0 && index < _cartItems.length){
+    if(_cartItems[index]['number'] > 1){
+      int currentNumber = _cartItems[index]['number'] as int? ?? 1;
+    if(currentNumber > 1){
+      _cartItems[index]['number'] = currentNumber - 1;
+      notifyListeners();
+    }
+      _cartItems[index]['nember'] -= 1;
+      notifyListeners();
+    }
+  }
 }
 bool get isCartEmpty => _cartItems.isEmpty;
 }

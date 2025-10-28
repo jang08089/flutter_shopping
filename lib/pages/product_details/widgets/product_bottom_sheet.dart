@@ -5,12 +5,12 @@ import 'package:flutter_shopping/pages/product_details/chat_page.dart';
 import 'package:flutter_shopping/pages/product_details/widgets/icons.dart';
 
 class ProductBottomSheet extends StatelessWidget {
-  bool isFavortie;
+  bool isFavorite;
   VoidCallback onFavoriteToggle;
   VoidCallback onChatTap;
 
   ProductBottomSheet({
-    required this.isFavortie,
+    required this.isFavorite,
     required this.onFavoriteToggle,
     required this.onChatTap,
   });
@@ -28,17 +28,14 @@ class ProductBottomSheet extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CustomIconButton(
-            icon: isFavortie ? CupertinoIcons.heart_fill : CupertinoIcons.heart,
+            icon: isFavorite ? CupertinoIcons.heart_fill : CupertinoIcons.heart,
             onTap: onFavoriteToggle,
-            colorData: isFavortie ? Colors.deepOrange : Colors.grey,
+            colorData: isFavorite ? Colors.deepOrange : Colors.grey,
           ),
           Expanded(
             child: InkWell(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ChatPage()),
-                );
+                onChatTap();
               },
 
               child: Container(

@@ -1,14 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_shopping/pages/product_details/widgets/product_data.dart';
 
 class ChatPage extends StatefulWidget {
+  final String imagePath;
+  final String name;
+  final int price;
+
+  ChatPage({required this.imagePath, required this.name, required this.price});
+
   @override
   State<ChatPage> createState() => _ChatPageState();
 }
 
 class _ChatPageState extends State<ChatPage> {
-  ProductData productData = ProductData();
   TextEditingController controller = TextEditingController();
   ScrollController scrollController = ScrollController();
 
@@ -33,7 +37,7 @@ class _ChatPageState extends State<ChatPage> {
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: Image.asset(
-                productData.imagePath,
+                widget.imagePath,
                 width: 45,
                 height: 45,
                 fit: BoxFit.cover,
@@ -45,13 +49,13 @@ class _ChatPageState extends State<ChatPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    productData.title,
+                    widget.name,
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   Text(
-                    '${productData.price}원',
+                    '${widget.price}원',
                     style: TextStyle(fontSize: 13, color: Colors.grey[700]),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
