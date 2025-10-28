@@ -61,10 +61,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   void deleteItem(int index) {
+    final itemToRemove = items[index];
+    final itemName = itemToRemove['name'] as String;
     setState(() {
       items.removeAt(index);
     });
-  }
+    cartModel.removeItemCart(itemName);
+  }// 상품 삭제 시 장바구니 같이 삭제
 
   Widget get bodyContent {
     if (items.isEmpty) {
