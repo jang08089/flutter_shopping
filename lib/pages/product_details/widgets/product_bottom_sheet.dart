@@ -1,18 +1,25 @@
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_shopping/pages/home/cartmodel.dart';
 import 'package:flutter_shopping/pages/product_details/chat_page.dart';
 import 'package:flutter_shopping/pages/product_details/widgets/icons.dart';
 
 class ProductBottomSheet extends StatelessWidget {
-  bool isFavorite;
-  VoidCallback onFavoriteToggle;
-  VoidCallback onChatTap;
+  VoidCallback onCartToggle;
+  final String name;
+  final String imagePath;
+  final int price;
+  final String contents;
+  final bool alreadyCart;
 
   ProductBottomSheet({
-    required this.isFavorite,
-    required this.onFavoriteToggle,
-    required this.onChatTap,
+    required this.onCartToggle,
+    required this.name,
+    required this.imagePath,
+    required this.price,
+    required this.contents,
+    required this.alreadyCart,
   });
 
   @override
@@ -28,14 +35,62 @@ class ProductBottomSheet extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CustomIconButton(
-            icon: isFavorite ? CupertinoIcons.heart_fill : CupertinoIcons.heart,
-            onTap: onFavoriteToggle,
-            colorData: isFavorite ? Colors.lightBlue : Colors.grey,
+            icon: Icons.shopping_cart_checkout,
+            colorData: alreadyCart ? Colors.lightBlue : Colors.grey,
+            //
+            onTap: () {
+              if (alreadyCart) {
+                cartModel.removeItemCart(name);
+                showCupertinoDialog(
+                  context: context,
+                  builder: (context) => CupertinoAlertDialog(
+                    title: Text("제거 완료"),
+                    content: Text("장바구니에서 제거되었습니다."),
+                    actions: [
+                      CupertinoDialogAction(
+                        isDefaultAction: true,
+                        onPressed: () => Navigator.of(context).pop(),
+                        child: Text("확인"),
+                      ),
+                    ],
+                  ),
+                );
+              } else {
+                print('장바구니에 있는 상품임? : $alreadyCart, false니까 추가 함,');
+                cartModel.addItem(name, price, imagePath: imagePath);
+                showCupertinoDialog(
+                  context: context,
+                  builder: (context) => CupertinoAlertDialog(
+                    title: Text("추가 완료"),
+                    content: Text("장바구니에 추가되었습니다."),
+                    actions: [
+                      CupertinoDialogAction(
+                        isDefaultAction: true,
+                        onPressed: () => Navigator.of(context).pop(),
+                        child: Text("확인"),
+                      ),
+                    ],
+                  ),
+                );
+              }
+              onCartToggle();
+            },
+            //
           ),
           Expanded(
             child: InkWell(
               onTap: () {
-                onChatTap();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ChatPage(
+                      imagePath: imagePath,
+                      name: name,
+                      price: price,
+                      contents: contents,
+                    ),
+                  ),
+                );
               },
 
               child: Container(

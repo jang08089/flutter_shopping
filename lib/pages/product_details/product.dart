@@ -3,12 +3,12 @@
 //   String content;
 //   int price;
 //   bool isAvailable;
-//   bool isFavorite;
+//   bool alreadyCart;
 //   Product({
 //     required this.title,
 //     required this.content,
 //     required this.price,
 //     required this.isAvailable,
-//     required this.isFavorite,
+//     required this.alreadyCart,
 //   });
 // }
