@@ -29,7 +29,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
     final String imagePath = widget.item['image'];
     final String name = widget.item['name'];
     final int price = widget.item['price'];
-    // final String contents = widget.item['contents'];
+    final String contents = widget.item['contents'];
 
     return Scaffold(
       body: Stack(
@@ -52,7 +52,11 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                     print('찜했음? : $isFavorite');
                   },
                 ),
-                ProductInfoSection(name: name, price: price),
+                ProductInfoSection(
+                  name: name,
+                  price: price,
+                  contents: contents,
+                ),
               ],
             ),
           ),

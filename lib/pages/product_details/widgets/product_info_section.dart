@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 class ProductInfoSection extends StatelessWidget {
   final String name;
   final int price;
-  // final String contents;
-  ProductInfoSection({required this.name, required this.price});
+  final String contents;
+  ProductInfoSection({
+    required this.name,
+    required this.price,
+    required this.contents,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +39,8 @@ class ProductInfoSection extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Text(
-            // contents ?? 'qweqweqweqwe', // item에서 설명 사용
-            '상품 설명 없음', // item에서 설명 사용
+            contents ?? '상품 설명 없음', // item에서 설명 사용
+            // '상품 설명 없음', // item에서 설명 사용
             style: TextStyle(fontSize: 16, color: Colors.grey[700]),
           ),
         ),
