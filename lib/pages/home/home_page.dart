@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_shopping/core.dart';
 import 'package:flutter_shopping/pages/add_product_pages/add_product_page.dart';
 import 'package:flutter_shopping/pages/home/cartmodel.dart';
 import 'package:flutter_shopping/pages/itemcartpage/noitemcart_page.dart';
@@ -17,12 +16,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Map<String, dynamic>> items = [
-    {'name': '패딩', 'price': 2000000},
-    {'name': '가디건', 'price': 200000},
-    {'name': '양말', 'price': 2000},
-    {'name': '바지', 'price': 30000},
-  ];
+  List<Map<String, dynamic>> items = [];
   @override
   void initState() {
     super.initState();
@@ -67,10 +61,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   void deleteItem(int index) {
+    final itemToRemove = items[index];
+    final itemName = itemToRemove['name'] as String;
     setState(() {
       items.removeAt(index);
     });
-  }
+    cartModel.removeItemCart(itemName);
+  }// 상품 삭제 시 장바구니 같이 삭제
 
   Widget get bodyContent {
     if (items.isEmpty) {
@@ -100,7 +97,9 @@ class _HomePageState extends State<HomePage> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ProductDetailsPage()),
+                MaterialPageRoute(
+                  builder: (context) => ProductDetailsPage(item: item),
+                ),
               ); // 상세페이지 연결
             },
             child: itemList(
@@ -108,22 +107,18 @@ class _HomePageState extends State<HomePage> {
               item['price'] as int,
               imagePath: item['image']?.toString() ?? "",
               () => showDelete(context, index),
-              () {
-                cartModel.addItem(item['name'] as String, item['price'] as int);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      "장바구니에 추가되었습니다",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    backgroundColor: Colors.grey[700],
-                    duration: Duration(seconds: 1),
-                  ), // 장바구니 아이콘 눌렀을 때 나오는 스낵바
-                );
-              },
+              (){
+               cartModel.addItem(
+                item['name'] as String, item['price'] as int, imagePath: item['image']?.toString() ?? "");
+               ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text("장바구니에 추가되었습니다",
+                style: TextStyle(color: Colors.white,
+                fontWeight: FontWeight.bold),),
+                backgroundColor: Colors.grey[700],
+                duration: Duration(seconds: 1),
+                 ), // 장바구니 아이콘 눌렀을 때 나오는 스낵바
+               );
+              }
             ),
           );
         },

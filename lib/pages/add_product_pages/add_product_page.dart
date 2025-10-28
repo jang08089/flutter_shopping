@@ -81,6 +81,7 @@ class _AddProductPageState extends State<AddProductPage> {
               "price": int.tryParse(productPrice ?? "0") ?? 0,
               "selected": true,
               "image": selectedImagePath ?? "",
+              "contents": productDescription ?? "",
             };
 
             showCupertinoDialog(

@@ -16,6 +16,11 @@ class _ImageSelectorState extends State<ImageSelector> {
     "assets/images/simba.jpg",
     "assets/images/penguin.png",
     "assets/images/suyeon.jpg",
+    "assets/images/audi.jpeg",
+    "assets/images/classic.jpeg",
+    "assets/images/classiccar.jpeg",
+    "assets/images/tiger.jpeg",
+    "assets/images/jaguar.jpeg"
   ];
 
   void _openGallery() {

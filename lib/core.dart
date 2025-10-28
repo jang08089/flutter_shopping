@@ -4,6 +4,6 @@ class Product {
   String content; // 상품 상세설명
   int price; // 가격
   // bool isAvailable;
-  bool isFavorite; // 찜
+  bool isFavorite = false; // 찜
   bool myBag; // 장바구니
 }
