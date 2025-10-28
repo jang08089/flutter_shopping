@@ -26,7 +26,7 @@ class ImageTopIcons extends StatelessWidget {
         CustomIconButton(
           icon: isFavorite ? CupertinoIcons.heart_fill : CupertinoIcons.heart,
           onTap: onFavoriteToggle,
-          colorData: isFavorite ? Colors.deepOrange : Colors.grey,
+          colorData: isFavorite ? Colors.blue : Colors.grey,
         ),
       ],
     );

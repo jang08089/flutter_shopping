@@ -112,7 +112,7 @@ class _ChatPageState extends State<ChatPage> {
                     child: Container(
                       padding: EdgeInsets.all(9),
                       decoration: BoxDecoration(
-                        color: Colors.deepOrange,
+                        color: Colors.lightBlue,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(
@@ -173,7 +173,7 @@ class _ChatPageState extends State<ChatPage> {
                   child: Icon(
                     CupertinoIcons.arrow_up_circle_fill,
                     size: 40,
-                    color: Colors.deepOrange,
+                    color: Colors.lightBlue,
                   ),
                 ),
               ),

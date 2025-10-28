@@ -61,7 +61,7 @@ class _ProductImageSectionState extends State<ProductImageSection> {
                       .heart_fill //찜 상태라면 하트
                 : CupertinoIcons.heart_slash_fill, // 찜 취소면 슬래쉬 하트
             color: isNowFavorite
-                ? Colors.deepOrange.withValues(alpha: 0.8) // 찜 상태라면 투명도 0.8 뻘건색
+                ? Colors.blue.withValues(alpha: 0.8) // 찜 상태라면 투명도 0.8 뻘건색
                 : Colors.grey.withValues(alpha: 0.8), // 찜 취소면 투명도 0.8 회색
             size: 100, // 애니 하트 크기
           ),

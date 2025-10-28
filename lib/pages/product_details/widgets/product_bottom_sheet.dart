@@ -30,7 +30,7 @@ class ProductBottomSheet extends StatelessWidget {
           CustomIconButton(
             icon: isFavorite ? CupertinoIcons.heart_fill : CupertinoIcons.heart,
             onTap: onFavoriteToggle,
-            colorData: isFavorite ? Colors.deepOrange : Colors.grey,
+            colorData: isFavorite ? Colors.lightBlue : Colors.grey,
           ),
           Expanded(
             child: InkWell(
@@ -42,7 +42,7 @@ class ProductBottomSheet extends StatelessWidget {
                 margin: EdgeInsets.only(left: 10),
                 height: 50,
                 decoration: BoxDecoration(
-                  color: Colors.deepOrange,
+                  color: Colors.lightBlue,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Center(
