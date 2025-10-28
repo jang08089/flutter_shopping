@@ -31,7 +31,7 @@ class _ProductImageSectionState extends State<ProductImageSection> {
     widget.onFavoriteToggle(); // 외부에 찜 토글 동작 위임(상태 저장 등)
 
     // 0.9초 후 자동으로 애니메이션 하트 숨김
-    Future.delayed(Duration(milliseconds: 500), () {
+    Future.delayed(Duration(milliseconds: 900), () {
       // 애니 위젯이 아직 화면에 남아 있으면 있으면 showHeart를 false로 변경
       if (mounted) setState(() => showHeart = false);
     });
@@ -54,7 +54,7 @@ class _ProductImageSectionState extends State<ProductImageSection> {
         // 찜하기 하트 애니
         AnimatedOpacity(
           opacity: showHeart ? 1.0 : 0.0, //showHeart에 따라 보이거나 숨김
-          duration: Duration(milliseconds: 100), //애니메이션 지속 시간
+          duration: Duration(milliseconds: 500), //애니메이션 지속 시간
           child: Icon(
             isNowFavorite
                 ? CupertinoIcons

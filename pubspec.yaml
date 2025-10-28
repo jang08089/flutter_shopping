@@ -23,7 +23,7 @@ dev_dependencies:
 flutter_native_splash:
   color: "#000000" # 스플래시 화면 배경색을 지정 (HEX 코드 사용) - 검은색 설정됨
   fullscreen: true # 상태바, 네비게이션 바까지 포함한 전체 화면 스플래시 여부
-  image: assets/images/pochita.jpeg # 중앙에 표시할 이미지 경로 (프로젝트 assets 폴더 기준)
+  image: assets/images/pochita.png # 중앙에 표시할 이미지 경로 (프로젝트 assets 폴더 기준)
   android: true # Android에서 스플래시 적용 여부 (혹시 몰라 안드로이드도 추가)
   ios: true # iOS에서 스플래시 적용 여부
   android_gravity: center # Android에서 이미지 위치 지정 (center = 중앙)

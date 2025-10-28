@@ -4,9 +4,15 @@ import 'package:flutter/material.dart';
 class ChatPage extends StatefulWidget {
   final String imagePath;
   final String name;
+  final String contents;
   final int price;
 
-  ChatPage({required this.imagePath, required this.name, required this.price});
+  ChatPage({
+    required this.imagePath,
+    required this.name,
+    required this.price,
+    required this.contents,
+  });
 
   @override
   State<ChatPage> createState() => _ChatPageState();
@@ -55,6 +61,12 @@ class _ChatPageState extends State<ChatPage> {
                     overflow: TextOverflow.ellipsis,
                   ),
                   Text(
+                    widget.contents,
+                    style: TextStyle(fontSize: 13, color: Colors.grey[700]),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Text(
                     '${widget.price}원',
                     style: TextStyle(fontSize: 13, color: Colors.grey[700]),
                     maxLines: 1,
@@ -63,12 +75,13 @@ class _ChatPageState extends State<ChatPage> {
                 ],
               ),
             ),
+            SizedBox(width: 30), // 상품 명과 내용이 길어지면 오른쪽 끝까지 가는데 그것을 방지
           ],
         ),
       ),
 
       body: Container(
-        padding: EdgeInsets.only(top: 10),
+        padding: EdgeInsets.only(top: 10, bottom: 100),
         margin: EdgeInsets.only(top: 10),
         color: Colors.white,
         // body쪽 빈 화면을 누르면~
@@ -84,10 +97,13 @@ class _ChatPageState extends State<ChatPage> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 17),
+                    padding: const EdgeInsets.only(top: 28),
                     child: Text(
                       '${sentTime()}',
-                      style: TextStyle(fontSize: 12, color: Colors.grey),
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: const Color.fromARGB(255, 113, 96, 96),
+                      ),
                     ),
                   ),
                   Container(

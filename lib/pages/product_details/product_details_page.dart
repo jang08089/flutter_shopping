@@ -94,8 +94,12 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) =>
-                  ChatPage(imagePath: imagePath, name: name, price: price),
+              builder: (context) => ChatPage(
+                imagePath: imagePath,
+                name: name,
+                price: price,
+                contents: contents,
+              ),
             ),
           );
         },
