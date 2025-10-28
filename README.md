@@ -61,7 +61,7 @@ samples, guidance on mobile development, and a full API reference. -->
 ***
 
 ### 상세 페이지_강준석
-<img width="180" alt="Image" src="https://github.com/user-attachments/assets/079e16fd-5e9d-458d-b6e2-ddc21c29ec3c" /> 
+<img width="180" alt="image" src="https://github.com/user-attachments/assets/21db85ac-d27b-40ba-b941-335e1cc78d2b" />
 <img width="180" alt="Image" src="https://github.com/user-attachments/assets/f94ec160-78bf-42ea-b6e2-16c5b4e1945b" />
 
 >#### 기능
