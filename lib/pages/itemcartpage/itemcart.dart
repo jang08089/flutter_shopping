@@ -1,7 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shopping/pages/home/cartmodel.dart';
 import 'package:intl/intl.dart';
-import 'dart:io';
 
 class Itemcart extends StatefulWidget{
   const Itemcart({super.key});
@@ -66,7 +66,21 @@ void _updateCartList(){
          child: SizedBox(
           width: double.infinity,
           height: 50,
-           child: ElevatedButton(onPressed: (){},
+           child: ElevatedButton(onPressed: (){
+            showCupertinoDialog(context: context, builder: (BuildContext context){
+              return CupertinoAlertDialog(title: Text('구매 완료'), content: Text("상품이 구매되었습니다."),
+              actions: [CupertinoDialogAction(
+                isDefaultAction: false,
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text("확인"),
+            )
+            ],
+           );
+            } 
+            );
+           },
            style: ElevatedButton.styleFrom(
             backgroundColor: Colors.lightBlue,
             foregroundColor: Colors.white,
@@ -139,7 +153,7 @@ void _updateCartList(){
                        child: Container(
                         width: 30,
                         height: 30,
-                        color: Colors.grey,
+                        color: Colors.grey[400],
                         child: Icon(Icons.remove),
                       ),
                      ),
@@ -148,8 +162,9 @@ void _updateCartList(){
                       alignment: Alignment.center,
                       width: 30,
                       height: 30,
-                      color: Colors.grey,
-                      child: Text(number.toString()),
+                      color: Colors.grey[400],
+                      child: Text(number.toString(),
+                      style: TextStyle(fontWeight: FontWeight.bold),),
                     ),
                     SizedBox(width: 5),
                      GestureDetector(
@@ -157,7 +172,7 @@ void _updateCartList(){
                        child: Container(
                         width: 30,
                         height: 30,
-                        color: Colors.grey,
+                        color: Colors.grey[400],
                         child: Icon(Icons.add),
                                            ),
                      ),
