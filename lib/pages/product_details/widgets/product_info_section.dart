@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ProductInfoSection extends StatelessWidget {
   final String name;
@@ -12,6 +13,8 @@ class ProductInfoSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final formattedPrice = NumberFormat("#,###").format(price);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -30,7 +33,7 @@ class ProductInfoSection extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Text(
-            '$price원', // item에서 가격 사용
+            '$formattedPrice원', // intl로 포맷한 item에서 가격 사용
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
         ),
