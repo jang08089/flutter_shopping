@@ -7,6 +7,7 @@ import 'package:flutter_shopping/pages/home/widget/item_list.dart';
 import 'package:flutter_shopping/pages/itemcartpage/itemcart.dart';
 import 'package:flutter_shopping/pages/mypage/mypage.dart';
 import 'package:flutter_shopping/pages/product_details/product_details_page.dart';
+import 'package:flutter_shopping/pages/profile_editpage/profile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,6 +17,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Profile? profile;
   List<Map<String, dynamic>> items = [];
   @override
   void initState() {
@@ -31,6 +33,19 @@ class _HomePageState extends State<HomePage> {
 
   void _updateHomeState() {
     setState(() {});
+  }
+
+  Future<void> showProfile2() async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Mypage(profile)),
+    );
+
+    if (result != null && result is Profile) {
+      setState(() {
+        profile = result;
+      });
+    }
   }
 
   void showDelete(BuildContext context, int index) {
@@ -149,12 +164,7 @@ class _HomePageState extends State<HomePage> {
           SizedBox(width: 20),
           GestureDetector(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Mypage(),
-                ), // 마이페이지 연결 완료
-              );
+             showProfile2();
             },
             child: Icon(Icons.person_2),
           ),

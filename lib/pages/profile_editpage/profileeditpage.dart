@@ -5,7 +5,8 @@ import 'dart:io';
 
 
 class Profileeditpage extends StatefulWidget {
-  const Profileeditpage({super.key});
+  final Profile? profile;
+  const Profileeditpage(this.profile,{super.key});
 
   @override
   State<Profileeditpage> createState() => ProfileeditpageState();
@@ -33,6 +34,15 @@ class ProfileeditpageState extends State<Profileeditpage> {
     nicknamecontroller.dispose();
     super.dispose();
   }
+
+  @override
+void initState() {
+  super.initState();
+  if (widget.profile != null) {
+    nicknamecontroller.text = widget.profile!.nickname ?? '';
+    imageFile = widget.profile!.image;
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -94,11 +104,12 @@ class ProfileeditpageState extends State<Profileeditpage> {
                 ),
               ),
               SizedBox(height: 100),
-              Text("닉네임", textAlign: TextAlign.start),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: TextFormField(
-                  decoration: InputDecoration(border: OutlineInputBorder()),
+                  decoration: InputDecoration(border: OutlineInputBorder(),
+                  labelText: "닉네임",
+                  labelStyle: TextStyle(color: Colors.grey)),
                   validator: (value) {
                     if (value == null) {
                       return "닉네임을 입력해주세요";
