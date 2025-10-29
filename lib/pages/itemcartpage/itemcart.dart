@@ -31,7 +31,7 @@ class _ItemcartState extends State<Itemcart> {
   Widget build(BuildContext context) {
     final cartItem = cartModel.cartItems;
     final formatter = NumberFormat('#,###');
-
+    
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -41,6 +41,7 @@ class _ItemcartState extends State<Itemcart> {
         centerTitle: true,
       ),
       body: ListView.separated(
+        padding: EdgeInsets.only(bottom: 150),
         itemCount: cartItem.length,
         separatorBuilder: (context, index) => const Divider(),
         itemBuilder: (context, index) {
