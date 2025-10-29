@@ -42,7 +42,7 @@ class MypageState extends State<Mypage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("마이페이지"),
+        title: const Text("마이페이지",style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
         centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
@@ -58,6 +58,7 @@ class MypageState extends State<Mypage> {
             const SizedBox(height: 20),
             Row(
               children: [
+                SizedBox(width: 20),
                 Text(
                   profile?.nickname ?? "닉네임 없음",
                   style: const TextStyle(
@@ -67,8 +68,8 @@ class MypageState extends State<Mypage> {
                 ),
                 const Spacer(),
                 Container(
-                  width: 100,
-                  height: 100,
+                  width: 120,
+                  height: 120,
                   decoration: BoxDecoration(
                     color: Colors.grey,
                     borderRadius: BorderRadius.circular(100),

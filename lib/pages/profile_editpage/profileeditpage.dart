@@ -104,11 +104,12 @@ void initState() {
                 ),
               ),
               SizedBox(height: 100),
-              Text("닉네임", textAlign: TextAlign.start),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: TextFormField(
-                  decoration: InputDecoration(border: OutlineInputBorder()),
+                  decoration: InputDecoration(border: OutlineInputBorder(),
+                  labelText: "닉네임",
+                  labelStyle: TextStyle(color: Colors.grey)),
                   validator: (value) {
                     if (value == null) {
                       return "닉네임을 입력해주세요";
