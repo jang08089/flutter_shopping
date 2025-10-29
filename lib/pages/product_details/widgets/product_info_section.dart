@@ -17,11 +17,11 @@ class ProductInfoSection extends StatelessWidget {
     final formattPrice = NumberFormat("#,###").format(price);
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 13),
+      padding: EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 20),
+          SizedBox(height: 10),
           // 상품명
           Text(
             title, // item에서 이름 사용

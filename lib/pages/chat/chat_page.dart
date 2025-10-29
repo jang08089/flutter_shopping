@@ -1,15 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_shopping/pages/chat/widget/Chat_input_field.dart';
+import 'package:flutter_shopping/pages/chat/widget/chat_message_bubble.dart';
+import 'package:flutter_shopping/pages/chat/widget/chat_product_info.dart';
 
 class ChatPage extends StatefulWidget {
   final String imagePath;
-  final String name;
+  final String title;
   final String contents;
   final int price;
 
+  // 이 페이지는 어떤 데이터를 가지고 있는지 보여준다
   ChatPage({
     required this.imagePath,
-    required this.name,
+    required this.title,
     required this.price,
     required this.contents,
   });
@@ -32,51 +36,28 @@ class _ChatPageState extends State<ChatPage> {
     return formattedTime; // ← 이 부분이 필요
   }
 
+  void onSend() {
+    if (controller.text.trim().isEmpty) return;
+    setState(() {
+      messages.add(controller.text);
+    });
+    controller.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // resizeToAvoidBottomInset: true, // true값 할당
+      // 아니 왜 widget.imagePath (widget.)을 붙이는가 ? : “지금 이 State가 연결된 ChatPage 위젯이 가진 title 값”을 의미
+      // StatefulWidget의 build()는 State 클래스 안에 있기 때문에, -> State(상태)가 바뀔때마다 build가 된다
+      //Widget이 가진 데이터에 접근하려면 “widget.”을 통해 접근해야 한다.
       appBar: AppBar(
         titleSpacing: 0,
-        title: Row(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
-                widget.imagePath,
-                width: 45,
-                height: 45,
-                fit: BoxFit.cover,
-              ),
-            ),
-            SizedBox(width: 10),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    widget.name,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Text(
-                    widget.contents,
-                    style: TextStyle(fontSize: 13, color: Colors.grey[700]),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Text(
-                    '${widget.price}원',
-                    style: TextStyle(fontSize: 13, color: Colors.grey[700]),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(width: 30), // 상품 명과 내용이 길어지면 오른쪽 끝까지 가는데 그것을 방지
-          ],
+        title: ChatProductInfo(
+          title: widget.title,
+          imagePath: widget.imagePath,
+          contents: widget.contents,
+          price: widget.price,
         ),
       ),
 
@@ -91,37 +72,13 @@ class _ChatPageState extends State<ChatPage> {
           },
 
           child: ListView.builder(
+            controller: scrollController,
             itemCount: messages.length,
             itemBuilder: (context, index) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 28),
-                    child: Text(
-                      '${sentTime()}',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: const Color.fromARGB(255, 113, 96, 96),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                    alignment: Alignment.centerRight,
-                    child: Container(
-                      padding: EdgeInsets.all(9),
-                      decoration: BoxDecoration(
-                        color: Colors.lightBlue,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Text(
-                        messages[index],
-                        style: TextStyle(color: Colors.white, fontSize: 15),
-                      ),
-                    ),
-                  ),
-                ],
+              // 채팅 말풍선 위젯
+              return ChatMessageBubble(
+                messages: messages[index],
+                sentTime: sentTime(),
               );
             },
           ),
@@ -132,53 +89,7 @@ class _ChatPageState extends State<ChatPage> {
           height: 100,
           padding: EdgeInsets.symmetric(horizontal: 15),
           color: Colors.white,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center, // 수직 가운데 정렬
-            children: [
-              Expanded(
-                child: TextField(
-                  controller: controller,
-                  maxLines: 1,
-                  onSubmitted: (value) {
-                    if (value.trim().isEmpty) return;
-                    setState(() {
-                      messages.add(value);
-                    });
-                    controller.clear();
-                  },
-                  decoration: InputDecoration(
-                    hintText: "메시지 보내기",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                      borderSide: BorderSide.none,
-                    ),
-                    fillColor: Colors.grey[200],
-                    filled: true,
-                    //TextFild 내부 패딩 조절 (글자와 TextFild 사이의 패딩임)
-                    contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                  ),
-                ),
-              ),
-              SizedBox(width: 10),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 6.0),
-                child: GestureDetector(
-                  onTap: () {
-                    if (controller.text.trim().isEmpty) return;
-                    setState(() {
-                      messages.add(controller.text);
-                    });
-                    controller.clear();
-                  },
-                  child: Icon(
-                    CupertinoIcons.arrow_up_circle_fill,
-                    size: 40,
-                    color: Colors.lightBlue,
-                  ),
-                ),
-              ),
-            ],
-          ),
+          child: ChatInputField(controller: controller, onSend: onSend),
         ),
       ),
     );

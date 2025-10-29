@@ -50,6 +50,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
               bottom: 130,
             ), // bottomSheet 높이만큼 (없으면 스크롤이 끝까지 안되므로)
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start, // ← 추가
               children: [
                 // 상품 사진 위젯
                 ProductImageSection(imagePath: imagePath),
@@ -73,7 +74,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 Navigator.pop(context);
               },
               onCartToggle: toggleCart,
-              // onCartTap: onCartTap,
             ),
           ),
         ],
@@ -82,7 +82,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
       // bottomSheet 영역
       bottomSheet: ProductBottomSheet(
         onCartToggle: toggleCart,
-        name: title,
+        title: title,
         imagePath: imagePath,
         price: price,
         contents: contents,
