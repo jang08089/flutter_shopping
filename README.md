@@ -81,7 +81,7 @@ samples, guidance on mobile development, and a full API reference. -->
 >1. 사진과 닉네임을 등록하여 나만의 프로필을 설정 가능합니다.
 ***
 
-### 장바구니_김범수
+### 장바구니_김범수, 장준혁
 <img width="180" alt="Image" src="https://github.com/user-attachments/assets/33e9aca8-eb39-4848-a173-28705b0020a4" /> 
 <img width="180" alt="Image" src="https://github.com/user-attachments/assets/57aade9d-be2b-4903-8e42-5b21f9a27288" /> 
 <img width="180" alt="Image" src="https://github.com/user-attachments/assets/587bb22c-5f83-4a4e-a582-f5abd08bc8a7" />
