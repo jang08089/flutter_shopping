@@ -2,52 +2,47 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class ProductInfoSection extends StatelessWidget {
-  final String name;
+  final String title;
   final int price;
   final String contents;
   ProductInfoSection({
-    required this.name,
+    required this.title,
     required this.price,
     required this.contents,
   });
 
   @override
   Widget build(BuildContext context) {
-    final formattedPrice = NumberFormat("#,###").format(price);
+    // 금액 가독성을 위해 포맷
+    final formattPrice = NumberFormat("#,###").format(price);
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(height: 20),
-        // 상품명
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: Text(
-            name, // item에서 이름 사용
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 13),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 20),
+          // 상품명
+          Text(
+            title, // item에서 이름 사용
             style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
             softWrap: true,
           ),
-        ),
-        SizedBox(height: 10),
-        // 상품 가격
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: Text(
-            '$formattedPrice원', // intl로 포맷한 item에서 가격 사용
+          SizedBox(height: 10),
+          // 상품 가격
+          Text(
+            '$formattPrice원',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-        ),
-        SizedBox(height: 20),
-        // 상품 설명
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: Text(
-            contents ?? '상품 설명 없음', // item에서 설명 사용
-            // '상품 설명 없음', // item에서 설명 사용
+          SizedBox(height: 30),
+          // 상품 설명
+          Text(
+            contents,
             style: TextStyle(fontSize: 16, color: Colors.grey[700]),
+            softWrap: true,
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

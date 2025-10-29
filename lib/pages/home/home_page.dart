@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
       items.removeAt(index);
     });
     cartModel.removeItemCart(itemName);
-  }// 상품 삭제 시 장바구니 같이 삭제
+  } // 상품 삭제 시 장바구니 같이 삭제
 
   Widget get bodyContent {
     if (items.isEmpty) {
@@ -107,18 +107,26 @@ class _HomePageState extends State<HomePage> {
               item['price'] as int,
               imagePath: item['image']?.toString() ?? "",
               () => showDelete(context, index),
-              (){
-               cartModel.addItem(
-                item['name'] as String, item['price'] as int, imagePath: item['image']?.toString() ?? "");
-               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text("장바구니에 추가되었습니다",
-                style: TextStyle(color: Colors.white,
-                fontWeight: FontWeight.bold),),
-                backgroundColor: Colors.grey[700],
-                duration: Duration(seconds: 1),
-                 ), // 장바구니 아이콘 눌렀을 때 나오는 스낵바
-               );
-              }
+              () {
+                cartModel.addItem(
+                  item['name'] as String,
+                  item['price'] as int,
+                  imagePath: item['image']?.toString() ?? "",
+                );
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      "장바구니에 추가되었습니다",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    backgroundColor: Colors.grey[700],
+                    duration: Duration(seconds: 1),
+                  ), // 장바구니 아이콘 눌렀을 때 나오는 스낵바
+                );
+              },
             ),
           );
         },

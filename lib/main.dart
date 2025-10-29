@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       //   "/": (context) => HomePage(), // 홈페이지 라우트
       //   "/add-product": (context) => AddProductPage(), // 상품 등록 페이지 라우트
       // },
+      theme: ThemeData(fontFamily: 'NotoSansKR'),
       routes: {
         "/": (context) => HomePage(), // 홈페이지 라우트
         "/add-product": (context) => AddProductPage(), // 상품 등록 페이지 라우트

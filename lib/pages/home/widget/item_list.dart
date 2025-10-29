@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:intl/intl.dart';
 
-
-
 Widget itemList(
   String itemName,
   int price,
- VoidCallback onDelete,
- VoidCallback onCartTap,
-   {
+  VoidCallback onDelete,
+  VoidCallback onCartTap, {
   String? imagePath = "",
 }) {
   final formattPrice = NumberFormat("#,###").format(price);
@@ -46,12 +43,11 @@ Widget itemList(
       Spacer(),
       GestureDetector(
         onTap: onCartTap,
-        child: Icon(Icons.shopping_cart_checkout)),
-        SizedBox(width: 15),
-      GestureDetector(
-        onTap: onDelete,
-        child: Icon(Icons.delete))
-      // 장바구니에 담는 기능 추가
+        child: Icon(Icons.shopping_cart_checkout),
+      ),
+      SizedBox(width: 15),
+      GestureDetector(onTap: onDelete, child: Icon(Icons.delete)),
+      // 장바구니에 담는 기능 추가 예정
     ],
   );
 }

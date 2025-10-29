@@ -31,23 +31,23 @@ class MypageState extends State<Mypage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("마이페이지"),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: Text("마이페이지"), centerTitle: true),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
-             SizedBox(height: 20),
+            SizedBox(height: 20),
             Row(
               children: [
                 Text(
                   profile?.nickname ?? "닉네임 없음",
                   style: TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 20,color: Colors.black),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Colors.black,
+                  ),
                 ),
-               Spacer(),
+                Spacer(),
                 Container(
                   width: 100,
                   height: 100,
@@ -63,30 +63,29 @@ class MypageState extends State<Mypage> {
                             fit: BoxFit.cover,
                           ),
                         )
-                      : Icon(
-                          Icons.person,
-                          color: Colors.white,
-                          size: 30,
-                        ),
+                      : Icon(Icons.person, color: Colors.white, size: 30),
                 ),
               ],
             ),
-             SizedBox(height: 20),
+            SizedBox(height: 20),
             SizedBox(
               width: double.infinity,
               height: 50,
-              child: ElevatedButton(                
+              child: ElevatedButton(
                 onPressed: showProfile,
                 child: Text("프로필 수정"),
               ),
             ),
             SizedBox(height: 30),
-             SizedBox(
+            SizedBox(
               width: double.infinity,
               height: 50,
-              child: ElevatedButton(                
-                onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder:(context)=> Itemcart()));
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Itemcart()),
+                  );
                 },
                 child: Text("장바구니"),
               ),
@@ -94,7 +93,6 @@ class MypageState extends State<Mypage> {
           ],
         ),
       ),
-     
     );
   }
 }
