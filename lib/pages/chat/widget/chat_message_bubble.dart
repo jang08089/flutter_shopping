@@ -8,7 +8,8 @@ class ChatMessageBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return 
+    Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         // 채팅 말풍선
