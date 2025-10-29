@@ -8,56 +8,54 @@ import 'package:flutter_shopping/pages/product_details/widgets/icons.dart';
 class ImageTopIcons extends StatelessWidget {
   final VoidCallback onBack;
   final VoidCallback onCartToggle;
-  final String name;
-  final String imagePath;
-  final int price;
   final bool alreadyCart;
 
   const ImageTopIcons({
     required this.onBack,
     required this.onCartToggle,
-    required this.imagePath,
-    required this.name,
-    required this.price,
     required this.alreadyCart,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        CustomIconButton(
-          icon: CupertinoIcons.back,
-          onTap: onBack,
-          colorData: Colors.grey,
-        ),
-        Spacer(), // 왼쪽 back과 오른쪽 아이콘 사이 공간 확보
-        Row(
-          children: [
-            CustomIconButton(
-              icon: Icons.person_2,
-              colorData: Colors.lightBlue,
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Mypage()),
-                );
-              },
-            ),
-            SizedBox(width: 10), // 아이콘 사이 간격
-            CustomIconButton(
-              icon: CupertinoIcons.bag_fill,
-              colorData: Colors.lightBlue,
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Itemcart()),
-                );
-              },
-            ),
-          ],
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Row(
+        children: [
+          CustomIconButton(
+            icon: CupertinoIcons.back,
+            onTap: onBack,
+            colorData: Colors.lightBlue,
+          ),
+          Spacer(), // 왼쪽 back과 오른쪽 아이콘 사이 공간 확보
+          Row(
+            children: [
+              // 마이페이지 이동 로직 비활성함
+              // CustomIconButton(
+              //   icon: Icons.person_2,
+              //   colorData: Colors.lightBlue,
+              //   onTap: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(builder: (context) => Mypage()),
+              //     );
+              //   },
+              // ),
+              SizedBox(width: 10), // 아이콘 사이 간격
+              CustomIconButton(
+                icon: CupertinoIcons.bag_fill,
+                colorData: Colors.lightBlue,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Itemcart()),
+                  );
+                },
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

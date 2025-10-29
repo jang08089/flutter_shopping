@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shopping/pages/home/cartmodel.dart';
-import 'package:flutter_shopping/pages/product_details/chat_page.dart';
+import 'package:flutter_shopping/pages/chat/chat_page.dart';
 import 'package:flutter_shopping/pages/product_details/widgets/image_top_icons.dart';
 import 'package:flutter_shopping/pages/product_details/widgets/product_bottom_sheet.dart';
 import 'package:flutter_shopping/pages/product_details/widgets/product_image_section.dart';
@@ -19,6 +19,7 @@ class ProductDetailsPage extends StatefulWidget {
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
   late bool alreadyCart;
 
+  // 장바구니에 존재하는지 'name'으로 찾기
   @override
   void initState() {
     super.initState();
@@ -26,12 +27,20 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
     alreadyCart = cartModel.cartItems.any((item) => item['name'] == itemName);
   }
 
+  // 장바구니 저장 여부 상태 갱신
+  void toggleCart() {
+    setState(() {
+      alreadyCart = !alreadyCart;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final String imagePath = widget.item['image'];
-    final String name = widget.item['name'];
-    final int price = widget.item['price'];
-    final String contents = widget.item['contents'];
+    //home_page에서 매개변수로 받은 item을 null-safe처리와 동시에 사용하기 쉽게 변수에 저장
+    final imagePath = widget.item['image'] ?? 'assets/images/error.jpg';
+    final title = widget.item['name'] ?? '상품명 미기재';
+    final price = widget.item['price'] ?? 0;
+    final contents = widget.item['contents'] ?? '상품설명 없음';
 
     return Scaffold(
       body: Stack(
@@ -41,14 +50,12 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
               bottom: 130,
             ), // bottomSheet 높이만큼 (없으면 스크롤이 끝까지 안되므로)
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ProductImageSection(
-                  // item 이미지 사용 이미 상품 등록 단계에서 데이터가 없으면 등록이 불가능하게 했지만 외부에서 혹시 잘못된 데이터가 들어올 가능성을 위해 null-safe 처리함
-                  imagePath: imagePath ?? 'assets/images/error.jpg',
-                ),
+                // 상품 사진 위젯
+                ProductImageSection(imagePath: imagePath),
+                // 상품 정보 위젯
                 ProductInfoSection(
-                  name: name,
+                  title: title,
                   price: price,
                   contents: contents,
                 ),
@@ -61,18 +68,11 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             left: 5,
             right: 5,
             child: ImageTopIcons(
-              imagePath: imagePath,
-              name: name,
-              price: price,
               alreadyCart: alreadyCart,
               onBack: () {
                 Navigator.pop(context);
               },
-              onCartToggle: () {
-                setState(() {
-                  alreadyCart = !alreadyCart;
-                });
-              },
+              onCartToggle: toggleCart,
               // onCartTap: onCartTap,
             ),
           ),
@@ -81,12 +81,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
 
       // bottomSheet 영역
       bottomSheet: ProductBottomSheet(
-        onCartToggle: () {
-          setState(() {
-            alreadyCart = !alreadyCart;
-          });
-        },
-        name: name,
+        onCartToggle: toggleCart,
+        name: title,
         imagePath: imagePath,
         price: price,
         contents: contents,

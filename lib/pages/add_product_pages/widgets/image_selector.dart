@@ -13,14 +13,14 @@ class _ImageSelectorState extends State<ImageSelector> {
 
   // assets에 이미지 파일 넣고 경로 입력
   List<String> images = [
-    "assets/images/simba.jpg",
-    "assets/images/penguin.png",
-    "assets/images/suyeon.jpg",
-    "assets/images/audi.jpeg",
-    "assets/images/classic.jpeg",
-    "assets/images/classiccar.jpeg",
-    "assets/images/tiger.jpeg",
-    "assets/images/jaguar.jpeg"
+    "assets/images/pochita.png",
+    "assets/images/death_note.jpg",
+    "assets/images/k-9.jpg",
+    "assets/images/private-Jets.jpg",
+    "assets/images/gold.jpg",
+    "assets/images/jordon.jpg",
+    "assets/images/padding.jpg",
+    "assets/images/krabbybugger.jpg",
   ];
 
   void _openGallery() {
