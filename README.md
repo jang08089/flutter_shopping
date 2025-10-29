@@ -1,4 +1,4 @@
-<!-- # shopping_mall
+S<!-- # shopping_mall
 
 A new Flutter project.
 
@@ -19,7 +19,7 @@ samples, guidance on mobile development, and a full API reference. -->
 ***
 
 ## 팀소개
-| 강준석  |  김범수 | 장준혁 | 조수연  |
+| 장준혁  |  조수연 | 김범수 | 강준석  |
 | :--- | :--- | :--- | :--- |
 | <img width="57" height="53" alt="Image" src="https://github.com/user-attachments/assets/b799d0e9-3789-46e1-bd7e-ad0a0e37b4f7" /> | <img width="57" height="53" alt="Image" src="https://github.com/user-attachments/assets/795f5bd5-146f-423c-b334-537b39a8b949" /> | <img width="57" height="53" alt="Image" src="https://github.com/user-attachments/assets/cb19c995-59bd-4887-9107-bced19c73682" /> | <img width="57" height="53" alt="Image" src="https://github.com/user-attachments/assets/94822a83-01e6-4238-97a7-effd3534683b" /> |
 ***
@@ -31,7 +31,7 @@ samples, guidance on mobile development, and a full API reference. -->
 >3. 메신저를 통해 판매자에게 문의가 가능합니다.
 ***
 
-## ![Display](https://img.shields.io/badge/PC%20Setup-5E5E5E?style=flat&logo=monitor&logoColor=white) 기술스택
+## 기술스택
 ![Visual Studio Code](https://img.shields.io/badge/VS%20Code-007ACC?style=flat&logo=visualstudiocode&logoColor=white) ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=figma&logoColor=white) ![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white) ![Notion](https://img.shields.io/badge/Notion-000000?style=flat&logo=notion&logoColor=white)
 ***
 
@@ -61,13 +61,15 @@ samples, guidance on mobile development, and a full API reference. -->
 ***
 
 ### 상세 페이지_강준석
-<img width="180" alt="Image" src="https://github.com/user-attachments/assets/079e16fd-5e9d-458d-b6e2-ddc21c29ec3c" /> 
-<img width="180" alt="Image" src="https://github.com/user-attachments/assets/f94ec160-78bf-42ea-b6e2-16c5b4e1945b" />
+<img width="180" alt="image" src="https://github.com/user-attachments/assets/21db85ac-d27b-40ba-b941-335e1cc78d2b" />
+<img width="180" height="2736" alt="image" src="https://github.com/user-attachments/assets/57471c64-826e-463c-a3c3-9e123484fffe" />
+<img width="180" height="2736" alt="Simulator Screenshot - iPhone Air - 2025-10-28 at 22 30 09" src="https://github.com/user-attachments/assets/143f21ea-2f63-46f2-b8ad-e0ec09ccf534" />
 
 >#### 기능
 >1. 상품 등록 시 입력한 상세 내용을 보여줍니다.
->2. 장바구니 아이콘을 터치해 장바구니로 이동이 가능합니다.
->3. 채팅하기 기능으로 판매자에게 문의가 가능합니다.
+>2. 장바구니 추가 버튼으로 해당 상품을 장바구니에 보관합니다.
+>3. 장바구니 아이콘을 터치해 장바구니로 이동이 가능합니다.
+>4. 채팅하기 기능으로 판매자에게 문의가 가능합니다.
 ***
 
 ### 마이 페이지_장준혁
@@ -77,10 +79,9 @@ samples, guidance on mobile development, and a full API reference. -->
 
 >#### 기능
 >1. 사진과 닉네임을 등록하여 나만의 프로필을 설정 가능합니다.
->2. 장바구니 버튼을 터치해 장바구니로 이동이 가능합니다.
 ***
 
-### 장바구니_장준혁
+### 장바구니_김범수, 장준혁
 <img width="180" alt="Image" src="https://github.com/user-attachments/assets/33e9aca8-eb39-4848-a173-28705b0020a4" /> 
 <img width="180" alt="Image" src="https://github.com/user-attachments/assets/57aade9d-be2b-4903-8e42-5b21f9a27288" /> 
 <img width="180" alt="Image" src="https://github.com/user-attachments/assets/587bb22c-5f83-4a4e-a582-f5abd08bc8a7" />

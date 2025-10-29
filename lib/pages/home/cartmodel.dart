@@ -22,8 +22,11 @@ void removeItemCart(String itemName){
 
 void plusNumber(int index){
   if(index >= 0 && index < _cartItems.length){
-    _cartItems[index]['number'] += 1;
+    int currentNumber = _cartItems[index]['number'] as int? ?? 1;
+    if (currentNumber < 99) {
+      _cartItems[index]['number'] = currentNumber + 1;
     notifyListeners();
+  }
   }
 } // 상품 수량 증가
 
@@ -35,7 +38,7 @@ void countNumber(int index){
       _cartItems[index]['number'] = currentNumber - 1;
       notifyListeners();
     }
-      _cartItems[index]['nember'] -= 1;
+      _cartItems[index]['number'] -= 1;
       notifyListeners();
     } // 상품 수량 감소
   }

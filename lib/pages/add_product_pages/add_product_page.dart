@@ -14,7 +14,7 @@ class AddProductPage extends StatefulWidget {
 }
 
 class _AddProductPageState extends State<AddProductPage> {
-  final _formKey = GlobalKey<FormState>(); // 폼 상태 관리 (유효성 검사, 저장 등)
+  final _formKey = GlobalKey<FormState>(); // submit 버튼과 동일, 서로 연결되어 동작
 
   // 각 입력 데이터 변수선언
   String? productName;
@@ -42,11 +42,14 @@ class _AddProductPageState extends State<AddProductPage> {
             children: [
               ImageSelector(
                 onImageSelected: (Path) {
+                  // 이미지 경로에서 이미지 선택
                   setState(() {
+                    // 이미지 선택 후 UI를 다시 그림
                     selectedImagePath = Path;
                   });
                 },
               ),
+              // 각각 입력한 값을 저장했으니 value로 호출
               SizedBox(height: 20),
               ProductNameInput(onSaved: (value) => productName = value),
               SizedBox(height: 20),
@@ -60,14 +63,18 @@ class _AddProductPageState extends State<AddProductPage> {
         ),
       ),
       bottomNavigationBar: SubmitButton(
-        formkey: _formKey,
+        // submit_button 에 등록하기 버튼 고정 시켜줌
+        formkey: _formKey, // submit_button 에서 전달받은 폼키 호출
 
         onSubmit: () {
           if (_formKey.currentState!.validate()) {
-            _formKey.currentState!.save();
+            // 폼 검증 = 등록버튼 누를때 모든 예외처리(validate)가 true면 통과, 하나라도 아니면 false 다음 코드 실행X
+            _formKey.currentState!.save(); // 검증 통과 후 호출, 입력값이 상태 변수에 저장
 
             if (selectedImagePath == null || selectedImagePath!.isEmpty) {
+              // 이미지 선택 여부 확인
               ScaffoldMessenger.of(context).showSnackBar(
+                // 선택 안할시 예외처리(스낵바 띄움)
                 SnackBar(
                   content: Text("이미지를 선택해주세요."),
                   backgroundColor: Colors.red,
@@ -76,6 +83,8 @@ class _AddProductPageState extends State<AddProductPage> {
               return;
             }
 
+            // 각 폼에서 입력받은 값들을 한 번에 모아서 newItem이라는 새로운 상품 객체 생성(홈페이지에 Map으로 명시되어 있으니 데이터 구조 맞춤)
+            // 홈페이지와 구조를 맞춘 후, newItem을 items에 추가하는 방식으로 데이터 통합
             final Map<String, dynamic> newItem = {
               "name": productName ?? "",
               "price": int.tryParse(productPrice ?? "0") ?? 0,
@@ -84,6 +93,7 @@ class _AddProductPageState extends State<AddProductPage> {
               "contents": productDescription ?? "",
             };
 
+            // 상품 등록 완료되면 팝업 창 띄움
             showCupertinoDialog(
               context: context,
               builder: (BuildContext dialogContext) {
