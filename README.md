@@ -31,7 +31,7 @@ samples, guidance on mobile development, and a full API reference. -->
 >3. 메신저를 통해 판매자에게 문의가 가능합니다.
 ***
 
-## ![Display](https://img.shields.io/badge/PC%20Setup-5E5E5E?style=flat&logo=monitor&logoColor=white) 기술스택
+## 기술스택
 ![Visual Studio Code](https://img.shields.io/badge/VS%20Code-007ACC?style=flat&logo=visualstudiocode&logoColor=white) ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=figma&logoColor=white) ![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white) ![Notion](https://img.shields.io/badge/Notion-000000?style=flat&logo=notion&logoColor=white)
 ***
 
