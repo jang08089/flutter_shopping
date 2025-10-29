@@ -1,4 +1,4 @@
-<!-- # shopping_mall
+S<!-- # shopping_mall
 
 A new Flutter project.
 
@@ -62,6 +62,7 @@ samples, guidance on mobile development, and a full API reference. -->
 
 ### 상세 페이지_강준석
 <img width="180" alt="image" src="https://github.com/user-attachments/assets/21db85ac-d27b-40ba-b941-335e1cc78d2b" />
+<img width="180" height="2736" alt="image" src="https://github.com/user-attachments/assets/57471c64-826e-463c-a3c3-9e123484fffe" />
 <img width="180" height="2736" alt="Simulator Screenshot - iPhone Air - 2025-10-28 at 22 30 09" src="https://github.com/user-attachments/assets/143f21ea-2f63-46f2-b8ad-e0ec09ccf534" />
 
 >#### 기능
