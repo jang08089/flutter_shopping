@@ -52,7 +52,7 @@ class _ChatPageState extends State<ChatPage> {
       // StatefulWidget의 build()는 State 클래스 안에 있기 때문에, -> State(상태)가 바뀔때마다 build가 된다
       //Widget이 가진 데이터에 접근하려면 “widget.”을 통해 접근해야 한다.
       appBar: AppBar(
-        titleSpacing: 0,
+        titleSpacing: 0, // leading 아이콘 (<-) 과 title 사이의 공백 조정
         title: ChatProductInfo(
           title: widget.title,
           imagePath: widget.imagePath,
@@ -84,14 +84,7 @@ class _ChatPageState extends State<ChatPage> {
           ),
         ),
       ),
-      bottomSheet: SafeArea(
-        child: Container(
-          height: 100,
-          padding: EdgeInsets.symmetric(horizontal: 15),
-          color: Colors.white,
-          child: ChatInputField(controller: controller, onSend: onSend),
-        ),
-      ),
+      bottomSheet: ChatInputField(controller: controller, onSend: onSend),
     );
   }
 }
