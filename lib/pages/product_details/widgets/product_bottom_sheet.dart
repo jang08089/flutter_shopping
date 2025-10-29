@@ -6,8 +6,8 @@ import 'package:flutter_shopping/pages/chat/chat_page.dart';
 import 'package:flutter_shopping/pages/product_details/widgets/icons.dart';
 
 class ProductBottomSheet extends StatelessWidget {
-  VoidCallback onCartToggle; // 장바구니 넣기
-  final String name; // 상품 이름
+  final VoidCallback onCartToggle; // 장바구니 넣기
+  final String title; // 상품 이름
   final String imagePath; // 상품 이미지 경로
   final int price; // 상품 가격
   final String contents; // 상품 설명
@@ -15,7 +15,7 @@ class ProductBottomSheet extends StatelessWidget {
 
   ProductBottomSheet({
     required this.onCartToggle,
-    required this.name,
+    required this.title,
     required this.imagePath,
     required this.price,
     required this.contents,
@@ -57,11 +57,11 @@ class ProductBottomSheet extends StatelessWidget {
             //
             onTap: () {
               if (alreadyCart) {
-                cartModel.removeItemCart(name);
+                cartModel.removeItemCart(title);
                 _showDialog(context, '제거 완료', '장바구니에서 해당 상품을 제거 합니다.');
               } else {
                 print('장바구니에 있는 상품임? : $alreadyCart, false니까 추가 함,');
-                cartModel.addItem(name, price, imagePath: imagePath);
+                cartModel.addItem(title, price, imagePath: imagePath);
                 _showDialog(context, '추가 완료', '장바구니에서 해당 상품을 추가 합니다.');
               }
               onCartToggle(); // 장바구니 여부 갱신
@@ -76,7 +76,7 @@ class ProductBottomSheet extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => ChatPage(
                       imagePath: imagePath,
-                      name: name,
+                      title: title,
                       price: price,
                       contents: contents,
                     ),
