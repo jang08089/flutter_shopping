@@ -20,7 +20,7 @@ class _ImageSelectorState extends State<ImageSelector> {
     "assets/images/classic.jpeg",
     "assets/images/classiccar.jpeg",
     "assets/images/tiger.jpeg",
-    "assets/images/jaguar.jpeg"
+    "assets/images/jaguar.jpeg",
   ];
 
   void _openGallery() {
@@ -39,15 +39,18 @@ class _ImageSelectorState extends State<ImageSelector> {
             ),
             itemCount: images.length,
             itemBuilder: (context, index) {
+              // 갤러리 UI에서 이미지 리스트 가져옴
               return GestureDetector(
                 onTap: () {
                   setState(() {
-                    selectedImage = images[index];
+                    selectedImage = images[index]; // 어느 이미지를 가져올건지
                   });
                   widget.onImageSelected(images[index]);
-                  Navigator.pop(context); // 선택 후 팝업 닫기
+                  Navigator.pop(context); // 아무 인덱스 이미지선택 후 팝업 닫기
                 },
-                child: Image.asset(images[index]),
+                child: Image.asset(
+                  images[index],
+                ), // 이미지 파일 경로의 리스트중 몇번째 것을 가져올건지
               );
             },
           ),
@@ -58,6 +61,7 @@ class _ImageSelectorState extends State<ImageSelector> {
 
   @override
   Widget build(BuildContext context) {
+    // 이미지를 선택 했을 때 출력되고 선택하지 않았을 때 기본 이미지 아이콘 출력
     return Center(
       child: Column(
         children: [
