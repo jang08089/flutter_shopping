@@ -38,8 +38,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   Widget build(BuildContext context) {
     //home_page에서 매개변수로 받은 item을 null-safe처리와 동시에 사용하기 쉽게 변수에 저장
     final imagePath = widget.item['image'] ?? 'assets/images/error.jpg';
-    final title = widget.item['name'] ?? '상품명 미기재';
-    final price = widget.item['price'] ?? 0;
+    final title = widget.item['name'] ?? '상품명 없음';
+    final price = widget.item['price'] ?? '무료 나눔';
     final contents = widget.item['contents'] ?? '상품설명 없음';
 
     return Scaffold(
